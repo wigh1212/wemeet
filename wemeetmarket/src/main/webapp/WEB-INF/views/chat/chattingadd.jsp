@@ -159,12 +159,12 @@ align:center;
   </header>
 
   <!-- Main Content -->
- 
- <form action="addchat" method="post" id="addpost">
+ <!-- action="addchat" method="post" -->
+ <form id="addpost">
  	
  	<p>방 제목 : <input id="ctitle" name="ctitle"> 
  	
-	<select name="job">
+	<select name="ccategory" id="ccategory">
     	<option value="">카테고리</option>
    		 <option value="가전제품">가전제품</option>
   	 	 <option value="전자">전자</option>
@@ -176,6 +176,7 @@ align:center;
   	 	 <option value="기타">기타</option>
 	</select>
  	</p>
+ 	<button id="addchat" onclick="return addchat()">만들기</button>
  
  </form>
  	
@@ -234,7 +235,34 @@ align:center;
 
   <!-- Custom scripts for this template -->
   <script src="/resources/js/clean-blog.min.js"></script>
-
+	
+	<script>
+		function addchat(){
+			var title=$("#ctitle").val();
+			var category=$("#ccategory").val();
+			var addpost=$("#addpost").val();
+			if(title.length < 1){
+				alert("방제목을 입력해주세요");
+			}
+			else{
+				
+				if(category.length < 1){
+					alert("카테고리를 선택해주세요");
+				}
+				else{
+					
+					alert("확인");
+					
+				}
+				
+				
+			}
+			
+			
+			
+		}	
+	
+	</script>
 </body>
 
 </html>
