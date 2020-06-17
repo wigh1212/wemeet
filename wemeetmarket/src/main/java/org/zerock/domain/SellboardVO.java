@@ -23,5 +23,4 @@ public class SellboardVO {
 	private int smoney;
 	private String saddress;
 	private String sphone;
-	
 }

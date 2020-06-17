@@ -42,12 +42,8 @@ public class SellBoardController {
 		
 		try {
 		//		HttpServletRequest request,
-		 String schedule="";
+	
 		 String content="";
-		 String target="";
-		 String claim="";
-		 String moc ="";
-		 String mocin =""; 
 		 int i=0;
 		 
 		System.out.println(sellboard.toString());
@@ -69,8 +65,7 @@ public class SellBoardController {
 		sellboard.setSsthumb(ssthumb);
 		sellboard.setSsimage(simage);
 		
-		System.out.println(request.getParameter("smoc1"));
- 
+		 
 		do {
 		 content +=(String)request.getParameter("scontent"+(i+1));
 		 content +=":";
@@ -79,10 +74,7 @@ public class SellBoardController {
 		}while(request.getParameter("scontent"+(i+1))!=null);
 
 		sellboard.setScontent(content);
-				 
-		i = 0;
-				
-		
+
 	    System.out.println(sellboard.toString());
 	    service.insert(sellboard);
 	    
@@ -103,7 +95,6 @@ public class SellBoardController {
 		
 		  SellboardVO sellboard = service.read(sno);
 
-		  
 		  
 		  
 		  model.addAttribute("sellboard",sellboard);

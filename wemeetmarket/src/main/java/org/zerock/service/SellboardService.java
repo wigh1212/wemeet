@@ -7,11 +7,7 @@ import org.zerock.domain.SellboardVO;
 
 public interface SellboardService {
 
-	public List<SellboardVO> topsellboard();
-	
-	public List<SellboardVO> topstream1();
-	
-	public List<SellboardVO> topsell();
+
 	
 	public List<SellboardVO> getlist();
 	
@@ -23,6 +19,7 @@ public interface SellboardService {
 	
 	public int update(SellboardVO sellboard);
 	
+	public int getTotal(Criteria cri);
 	
 	public List<SellboardVO> search(Criteria cri);
 	

@@ -19,19 +19,6 @@ public class SellboardServiceImpl implements SellboardService {
 
 	private SellBoardMapper mapper;
 
-	public List<SellboardVO> topstream() {
-	
-		return mapper.topstream();
-	}
-	
-	public List<SellboardVO> topstream1(){
-		return mapper.topstream1();
-	}
- 
-	public List<SellboardVO> topsell() {
-		
-		return mapper.topsell();
-	}
 
 	public List<SellboardVO> getlist() {
 		
@@ -64,11 +51,10 @@ public class SellboardServiceImpl implements SellboardService {
 		
 		return mapper.search(cri);
 	}
-
 	@Override
-	public List<SellboardVO> topsellboard() {
+	public int getTotal(Criteria cri) {
 		
-		return mapper.topsell();
+		return mapper.get;
 	}
 
 	

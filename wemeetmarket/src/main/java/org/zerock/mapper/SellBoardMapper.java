@@ -6,14 +6,7 @@ import org.zerock.domain.Criteria;
 import org.zerock.domain.SellboardVO;
 
 public interface SellBoardMapper {
-	
-	
-	public List<SellboardVO> topstream();
 
-	public List<SellboardVO> topstream1();
-
-	public List<SellboardVO> topsell();
-	
 	public List<SellboardVO> getlist();
 	
 	public void insert(SellboardVO sellboard);
