@@ -24,6 +24,9 @@
   <link href="/resources/css/clean-blog.min.css" rel="stylesheet">
   
   <style>
+  	 #writer, #regdate{
+  	 width:180px;
+  	 }
      #f1{
      border:1px solid #222847;
      width:300px;
@@ -121,7 +124,7 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="post-heading" style="text-align: center;">
-            <h1>Buy</h1>
+            <h1>Sell</h1>
         
           </div>
         </div>
@@ -143,7 +146,7 @@
   </article>
 
   <hr>
-<button class='btn' type="button">글작성</button>
+<a href="/seller/uploadsell">글작성</a>
   <!-- Footer -->
   <footer>
     
@@ -215,16 +218,18 @@
                      <th id=n>번호</th>
                      <th id=p>썸네일</th>
                      <th id=c style="text-align: center;">제목</th>
-                     <th>작성자</th>
-                     <th>작성일</th>                  
+                     <th id=writer>작성자</th>
+                     <th id=regdate>작성일</th>                  
                   </tr>
                </thead>
                
-               <c:forEach var ="selllist" items="${selllist }">
+               <c:forEach var ="sellboardlist" items="${sellboardlist }">
                		<tr>
-               			<th>${selllist.sno }</th>
-               			<th>${selllist.sthumb }</th>
-               			<th><a href="/seller/read?sno=${selllist.sno }">${selllist.sname }</a></th>
+               			<th>${sellboardlist.sno }</th>
+               			<th><img src="/resources/img/${sellboardlist.sthumb }" width=150px; height=100px;></th>
+               			<th><a href="/seller/read?sno=${sellboardlist.sno }">${sellboardlist.sname }</a></th>
+               			<th>${sellboardlist.mid }</th>
+               			<th>${sellboardlist.sregdate }</th>
                		</tr>
                </c:forEach>
             </table>

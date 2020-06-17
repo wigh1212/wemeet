@@ -23,7 +23,132 @@
 
   <!-- Custom styles for this template -->
   <link href="/resources/css/clean-blog.min.css" rel="stylesheet">
+   
+<style>
+   
+   #t{
 
+   margin-left:340px;
+   }
+   #tx{
+   
+   width:680px;
+   height:40px;
+   
+      margin-left:20px;   
+   }
+   #c{
+   margin-top:20px;
+   margin-left:350px;
+   margin-bottom:200px;
+   
+   }
+   #cx{
+      
+      width:680px;
+      height:480px;
+      margin-top:16px;
+      margin-left:40px;
+   }
+   #m{   
+      margin-top:30px;
+      margin-left:340px;
+      margin-bottom:30px;
+      height:20px;
+   }
+   #mx{
+       border:1px solid rgb(0, 0, 0);
+      margin-left:470px;
+   
+      margin-top:30px;
+      width:300px;
+      height:250px;
+   }
+   
+   #fu{
+      margin-top:20px;
+      margin-left:210px;
+      
+      
+   }
+   #m2{
+      margin-right:2px;
+      margin-left:340px;
+      margin-bottom:40px;
+      margin-top:70px;
+      
+   
+   }
+   #mx2{
+          border:1px solid rgb(0, 0, 0);
+      margin-left:470px;
+      margin-bottom:10px;
+      margin-top:20px;
+      width:300px;
+      height:250px;
+      
+   }
+   
+   #fu2{
+      margin-left:650px;
+      margin-bottom:10px;
+      margin-top:10px;
+   }
+   #p{
+      margin-top:20px;
+      margin-left:350px;
+      
+   }
+   #px{
+      
+      width:220px;
+      height:40px;
+      margin-left:30px;
+   }
+   #v{
+      
+      margin-left:380px;
+   }
+   
+   #vx{
+      width:220px;
+   
+      margin-left:40px;
+      margin-top:5px;
+      
+   }
+   #e{
+   margin-left:350px;
+   margin-top:10px;
+   margin-bottom:50px;
+   }
+   
+   #ex{
+   margin-top:5px;
+   margin-left:35px;
+   width:400px;
+   height:150px;
+   }
+   #a{
+   width:180px;
+   margin-left:620px;
+   }
+   #s{
+   margin-left:10px;
+
+   }
+   
+   #r{
+   margin-left:30px;
+   width:100px;
+   
+   }
+   #top{
+   margin-left:900px;
+   }
+   
+
+</style>
 </head>
 
 <body>
@@ -31,7 +156,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-      <a href="/"> <img src="/resources/img/logo.png" width="400px" height="100px" class="navbar-brand"/> </a>
+      <a class="navbar-brand" href="index.html">Start Bootstrap</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -51,20 +176,20 @@
              <a class="nav-link" href="/chat/chattingroom">상품토론</a>
           </li>
           <c:if test="${empty member||member.magree=='N'}">
-		  <li class="nav-item">
+        <li class="nav-item">
             <a class="nav-link" href="/member/register">login</a>
           </li>
-		  <li class="nav-item">
+        <li class="nav-item">
             <a class="nav-link" href="/member/register">회원가입</a>
           </li>
           </c:if>
            <c:if test="${member.mid != null && member.magree=='Y'}">
            <li class="nav-item">
             <a class="nav-link" href="/member/register">내정보</a>
-          	</li>
-		 	 <li class="nav-item">
-            	<a class="nav-link" href="/member/logout">로그아웃</a>
-          	</li>
+             </li>
+           <li class="nav-item">
+               <a class="nav-link" href="/member/logout">로그아웃</a>
+             </li>
           </c:if>
         </ul>
       </div>
@@ -78,8 +203,7 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="page-heading">
-            <h1>About Me</h1>
-            <span class="subheading">This is what I do.</span>
+            <h1>Sell</h1>
           </div>
         </div>
       </div>
@@ -87,21 +211,90 @@
   </header>
 
   <!-- Main Content -->
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio, adipisci quas excepturi maxime quae totam ducimus consectetur?</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius praesentium recusandae illo eaque architecto error, repellendus iusto reprehenderit, doloribus, minus sunt. Numquam at quae voluptatum in officia voluptas voluptatibus, minus!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consequuntur magnam, excepturi aliquid ex itaque esse est vero natus quae optio aperiam soluta voluptatibus corporis atque iste neque sit tempora!</p>
-      </div>
-    </div>
-  </div>
 
   <hr>
 
   <!-- Footer -->
   <footer>
+  
+      <table class="table table-striped table-bordered table-hover"  id="f2">
+           <div id="t">판매글 제목
+              <input type="text" id="tx"/> 
+              <select name="scategory" id="scategory">
+         		 <option value="">카테고리</option>
+        		  <option value="가전제품">가전제품</option>
+        		  <option value="전자">전자</option>
+     		     <option value="식료품">식료품</option>
+    		      <option value="반려동물">반려동물</option>
+       			   <option value="중고차">중고차</option>
+ 		         <option value="유아/장난감">유아/장난감</option>
+       			   <option value="레저/여행">레저/여행</option>
+     		     <option value="기타">기타</option>
+  			 </select>
+           </div>
+         
+         <div id="c" style="float:left;">
+            상품설명
+         </div>
+         <textarea cols="50" rows="8" id="cx"></textarea>
+         
+         <div id="m" style="float:left;"> 
+            상품이미지
+         
+         </div>
+         
+         <div id="mx">
+            
+         </div>
+         <button id="fu">
+            파일업로드
+         </button>
+         
+         <div id="m2" style="float:left;"> 
+            상품이미지
+         
+         </div>
+         
+         <div id="mx2">
+   
+         </div>
+         
+         <button id="fu2">
+            파일업로드
+         </button>      
+         
+         <div id="p">
+            전화번호
+            <input type="text" id="px"/>
+         </div>
+         
+         <div id="v">
+            가격
+            <input type="text" id="vx"/>
+         </div>
+         
+         <div id="e" style="float:left;">
+            거래위치
+            
+         </div>
+         <textarea cols="50" rows="8" id="ex"></textarea>
+         
+
+         <div>
+            <input type="text" style="float:left;" id="a"/>
+         </div>
+         <button id="s">
+            찾기
+         </button> 
+         
+         <button id="r">
+            등록하기
+         </button>         
+         
+   
+  
     <div class="container">
+        <a href="#" id="top">TOP</a>
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <ul class="list-inline text-center">
@@ -134,6 +327,7 @@
         </div>
       </div>
     </div>
+</table>
   </footer>
 
 

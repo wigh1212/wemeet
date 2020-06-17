@@ -32,11 +32,10 @@ import lombok.extern.log4j.Log4j;
 public class SellBoardController {
 	
 	private SellboardService service;
-	private upload up;		
+	private upload up;
+	
 	@GetMapping("/uploadsell")
-	public void uploadsell(@RequestParam("mid")String mid,Model model) {
-		
-		model.addAttribute("mid",mid);
+	public void uploadsell(Model model) {
 		
 	}
 	
@@ -65,8 +64,8 @@ public class SellBoardController {
 		
 		simage=simage.replace("C:\\lacture\\final\\wemeetmarket\\src\\main\\webapp\\resources\\img\\", "");
 		
-		sellboard.setSsthumb(ssthumb);
-		sellboard.setSsimage(simage);
+		sellboard.setSthumb(ssthumb);
+		sellboard.setSimage(simage);
 		
 		 
 		do {

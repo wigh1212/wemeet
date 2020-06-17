@@ -17,8 +17,8 @@ public class SellboardVO {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date sregdate;
 	private String scontent;
-	private String ssthumb;
-	private String ssimage;
+	private String sthumb;
+	private String simage;
 	private int smoney;
 	private String saddress;
 	private String sphone;

@@ -21,7 +21,7 @@ public class SellboardServiceImpl implements SellboardService {
 	
 
 	public List<SellboardVO> getlist(Criteria cri) {
-		
+
 		return mapper.getListWithPaging(cri);
 	}
 	@Transactional
