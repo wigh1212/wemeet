@@ -47,7 +47,7 @@ ul{
 
 }
 #chatarea1{
-
+    
 }
 #chatarea{
     width: 100%;
@@ -55,7 +55,18 @@ ul{
     border: 1px solid black;
     height: 500px;
     overflow: auto;
+     
+    
 }
+#userlist{
+ margin-top : 45px;
+ width:200px;
+ height: 500px;
+ overflow:auto;
+ float:right;
+ border:1px solid black;
+}
+
 </style>
 
 
@@ -93,11 +104,11 @@ ul{
 	// 변수를 선언합니다.
 
 
+	socket.emit('join',room); 
 	if(mid!=null){	
 	  rCheck=duck(socket,mid,room,rCheck);
 	} 
 	
-	socket.emit('join',room); 
 	// 이벤트를 연결합니다.
     socket.on('message', function (data) {
         // 추가할 문자열을 만듭니다.
@@ -108,7 +119,14 @@ ul{
         	output += '</li>';
         	$('#chatcontent').append(output);
         	$('#chatcontent').scrollTop($('#chatcontent').prop('scrollHeight'));
+        	
+        	console.log(data);
         }
+        else if(data.status==2){
+        	
+        	rCheck = false;
+        
+         }
         else{
         	var output = '';
         	output += '<li>';
@@ -247,6 +265,8 @@ ul{
 
 
   <!-- Main Content -->
+   <div id="userlist">
+   	   </div>
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
@@ -257,10 +277,13 @@ ul{
   
   		<div data-role="page" id="chatpage">
     	  <div data-role="content" id="chatarea" >
+   	     
    	     <ul id="chatcontent" data-role="listview" data-inset="true">
    	     		
    	     </ul>
+   	   
    	   </div>
+   	  
    	   <c:if test="${member.mid!=null}">
    	     <input type="text" id="message"/>
    	     <button id="btnchat">Button</button>

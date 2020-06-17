@@ -139,8 +139,8 @@ align:center;
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="page-heading">
-            <h1>Contact Me</h1>
-            <span class="subheading">Have questions? I have answers.</span>
+            <h1>토론장</h1>
+            <span class="subheading">대기방입니다.</span>
           </div>
         </div>
       </div>
@@ -156,7 +156,7 @@ align:center;
      
  		<div id="subcontent1">
  		<a href="/chat/chattingroom?cno=${chattinglist.cno}">
- 			<img src="#" id="imgdiv">
+ 			<img src="/resources/img/${chattinglist.cimage}" id="imgdiv">
  			<h2>${chattinglist.ctitle}</h2>
  			<p>카테고리:${chattinglist.ccategory}</p>
  			<p>방 생성날짜:${chattinglist.cregdate}</p>
