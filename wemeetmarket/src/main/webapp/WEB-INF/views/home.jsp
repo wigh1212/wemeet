@@ -126,7 +126,7 @@
        <div id="jb-sidebar" >
         <h2 id="">Home</h2>
         <ul id="ulbar">
-          <li id="libar"><a href="/?keyword=sel">팝니다 !</a></li>
+          <li id="libar"><a href="/?keyword=sell">팝니다 !</a></li>
           <li id="libar"><a href="/?keyword=buy">삽니다 !</a></li>
           <li id="libar"><a href="/?keyword=chat">토론장</a></li>
         </ul>
