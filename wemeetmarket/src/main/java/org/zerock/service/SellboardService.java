@@ -7,15 +7,15 @@ import org.zerock.domain.SellboardVO;
 
 public interface SellboardService {
 
-
+	public boolean modify(SellboardVO sellboard);
 	
-	public List<SellboardVO> getlist();
+	public List<SellboardVO> getlist(Criteria cri);
 	
 	public void insert(SellboardVO sellboard);
 	
-	public SellboardVO read(long sno);
+	public SellboardVO read(Long sno);
 	
-	public int delete(SellboardVO sellboard);
+	public boolean delete(Long sno);
 	
 	public int update(SellboardVO sellboard);
 	

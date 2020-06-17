@@ -11,12 +11,15 @@ public interface SellBoardMapper {
 	
 	public void insert(SellboardVO sellboard);
 	
-	public SellboardVO read(long sno);
+	public SellboardVO read(Long sno);
 	
-	public int delete(SellboardVO sellboard);
+	public int delete(Long sno);
 	
 	public int update(SellboardVO sellboard);
 	
 	public List<SellboardVO> search(Criteria cri);
 	
+	public int getTotalConut(Criteria cri);
+	
+	public List<SellboardVO> getListWithPaging(Criteria cri);
 }

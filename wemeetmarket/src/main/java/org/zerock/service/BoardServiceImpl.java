@@ -59,10 +59,7 @@ public class BoardServiceImpl implements BoardService {
 
    @Override
    public void insertcomment(AdminCommentVO adcomment) {
-      mapper.insertcomment(adcomment);
-      
-      
-      
+      mapper.insertcomment(adcomment);  
    }
 
    @Override

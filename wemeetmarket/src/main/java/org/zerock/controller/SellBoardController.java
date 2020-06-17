@@ -7,13 +7,17 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.zerock.domain.AdminBoardVO;
 import org.zerock.domain.Criteria;
+import org.zerock.domain.PageDTO;
 import org.zerock.domain.SellboardVO;
 import org.zerock.domain.upload;
 import org.zerock.service.SellboardService;
@@ -84,9 +88,7 @@ public class SellBoardController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
 		return "redirect:/";
-		
 	}
 	
 	
@@ -94,17 +96,32 @@ public class SellBoardController {
 	public void selectone(@RequestParam("sno")long sno,Model model,@RequestParam("mid")String mid) {
 		
 		  SellboardVO sellboard = service.read(sno);
-
-		  
-		  
 		  model.addAttribute("sellboard",sellboard);
-		 
-	   
+	}
+	
+	@GetMapping({"/get","/modify"})
+	public void get(@RequestParam("adno") Long sno, Model model, @ModelAttribute("cri") Criteria cri) {
+		log.info("/get or /modify");
+		model.addAttribute("adminboard",service.read(sno));
+	}
+	
+	@PostMapping("/modify")
+	public String modify(SellboardVO sellboard, RedirectAttributes rttr) {
+		if(service.modify(sellboard)) {
+			rttr.addFlashAttribute("result","success");
+		}
+		
+		return "redirect:/seller/sellboardlist";
 	}
 	
 	@GetMapping("/sellboardlist")
-	public void sellboardlist() {
+	public void sellboardlist(Criteria cri, Model model) {
 		
+		model.addAttribute("sellboardlist", service.getlist(cri));
+		
+		 int total = service.getTotal(cri);
+		 
+		 model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
 	
 	
@@ -124,8 +141,5 @@ public class SellBoardController {
 		
 		return "/seller/category";
 		
-	}
-	
-	
-	
+	}	
 }

@@ -7,33 +7,9 @@
 <!-- 메인 홈 로딩  -->
 <select id="getlist" resultType="org.zerock.domain.SellboardVO">
 <![CDATA[
-select * from selboard WHERE rownum<7 ORDER BY sregdate ASC 
+select * from selboard where sno > 0 order by sno asc
 ]]>
 </select>
-
-<select id="topstream" resultType="org.zerock.domain.SellboardVO">
-	<![CDATA[
-	select * from selboard where rownum< 7 AND sstream IS NOT NULL ORDER BY sregdate ASC
-	]]>
-</select>
-
-<select id="topstream1" resultType="org.zerock.domain.SellboardVO">
-	<![CDATA[
-	select * from selboard where rownum< 7 AND rownum > 3 AND sstream IS NOT NULL ORDER BY sregdate ASC
-	]]>
-</select>
-
-
-<select id=""></select>
-
-<select id="topsell" resultType="org.zerock.domain.SellboardVO">
-	<![CDATA[
-	select * from selboard where  rownum < 7 ORDER BY  views ASC
-	]]>
-</select>
-
-
-
 
 <!-- 판매글 쓰기 -->
 <insert id="insert">
@@ -48,21 +24,22 @@ values (sno_sequence.nextval,#{mid}, #{sname},#{scategory},sysdate,#{scontent},#
 
 <!-- 판매글 삭제 -->
 <delete id="delete">
-	delete from SELBOARD,SELQNA,SELREVIEW,SQCOMMENT where sno=#{sno} 
+	delete from SELBOARD where sno=#{sno} 
 </delete>
 
 <!-- 판매글 수정 -->
 <update id="update">
-	update SELBOARD SNAME=#{sname},SCATEGORY=#{scategory},SSTARTDATE=#{sstartdate},SENDDATE=#{senddate},SSCHEDULE=#{sschedule} ,SCONTENT=#{scontent}, SCOMMENT=#{scomment},STARGET=#{starget},SCLAIM=#{sclaim},SSTHUMB=#{ssthumb},SSIMAGE=#{ssimage},SURL=#{surl},SSTREAM=#{sstream},SMONEY=#{smoney},SMOC=#{smoc},SMOCIN=#{smocin}
+	update SELBOARD SNAME=#{sname},SCATEGORY=#{scategory},SCONTENT=#{scontent},SSTHUMB=#{ssthumb},SSIMAGE=#{ssimage},SMONEY=#{smoney},SADDRESS=#{saddress},SPHONE=#{sphone}
 	where sno=#{sno}
 </update>
 
 
 
-  <select id="search" resultType="org.zerock.domain.SellboardVO">
+  <select id="getListWithPaging" resultType="org.zerock.domain.SellboardVO">
    <![CDATA[
-   select *
-     from (select /*+INDEX_DESC(selboard pk_selboard) */ rownum rn , sname
+   select sno, mid, sname, scategory, sregdate, scontent, sthumb, simage, smoney, sphone, saddress
+     from (select /*+INDEX_DESC(selboard pk_selboard) */ 
+     	rownum rn , sno, mid, sname, scategory, sregdate, scontent, sthumb, simage, smoney, sphone, saddress
       from selboard
       where 
    ]]>
@@ -75,9 +52,12 @@ values (sno_sequence.nextval,#{mid}, #{sname},#{scategory},sysdate,#{scontent},#
   where rn > (#{pageNum} -1 ) * #{amount}   
 ]]>
 </select>
-
-
-
+<select id="getTotalConut" resultType="int">
+	select count(*) from selboard
+	where 
+	<include refid="criteria"></include>
+	sno > 0
+</select>
 <sql id="criteria">
    <trim prefix="(" suffix=") AND" prefixOverrides="OR">
       <foreach item='type' collection="typeArr">

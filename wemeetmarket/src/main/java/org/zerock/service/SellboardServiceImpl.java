@@ -18,11 +18,12 @@ import lombok.extern.log4j.Log4j;
 public class SellboardServiceImpl implements SellboardService {
 
 	private SellBoardMapper mapper;
+	
+	
 
-
-	public List<SellboardVO> getlist() {
+	public List<SellboardVO> getlist(Criteria cri) {
 		
-		return mapper.getlist();
+		return mapper.getListWithPaging(cri);
 	}
 	@Transactional
 	public void insert(SellboardVO sellboard) {
@@ -31,14 +32,14 @@ public class SellboardServiceImpl implements SellboardService {
 	}
 
 	
-	public SellboardVO read(long sno) {
+	public SellboardVO read(Long sno) {
 		
 		return mapper.read(sno);
 	}
 	@Transactional
-	public int delete(SellboardVO sellboard) {
+	public boolean delete(Long sno) {
 		
-		return mapper.delete(sellboard);
+		return mapper.delete(sno)==1;
 	}
 	@Transactional
 	public int update(SellboardVO sellboard) {
@@ -54,8 +55,11 @@ public class SellboardServiceImpl implements SellboardService {
 	@Override
 	public int getTotal(Criteria cri) {
 		
-		return mapper.get;
+		return mapper.getTotalConut(cri);
 	}
-
-	
+	@Override
+	public boolean modify(SellboardVO sellboard) {
+		
+		return mapper.update(sellboard)==1;
+	}
 }
