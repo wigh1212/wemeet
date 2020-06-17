@@ -83,7 +83,7 @@
             <a class="nav-link" href="/buyer/buyboardlist">삽니다</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/chat/chattingroom">상품토론</a>
+            <a class="nav-link" href="/chat/waitingroom">상품토론</a>
           </li>
           <c:if test="${empty member||member.magree=='N'}">
 		  <li class="nav-item">
@@ -232,7 +232,7 @@
         	<hr>
  		 </c:forEach>
  		<div class="clearfix">
-          <a class="btn btn-primary float-right" href="/chat/chattingroom">판매장으로 &rarr;</a>
+          <a class="btn btn-primary float-right" href="/chat/waitingroom">판매장으로 &rarr;</a>
         </div>
  		 
         </c:if>
