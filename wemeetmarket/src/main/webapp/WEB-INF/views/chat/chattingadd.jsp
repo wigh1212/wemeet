@@ -26,8 +26,67 @@
 
   <!-- Custom styles for this template -->
   <link href="/resources/css/clean-blog.min.css" rel="stylesheet">
+   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 
 </head>
+
+<script>
+	$(document).ready(function(){
+	
+	
+		
+	function readURL(input) {
+		 if (input.files && input.files[0]) {
+		  var reader = new FileReader();
+		  
+		  reader.onload = function (e) {
+		   $('#image_section').attr('src', e.target.result);  
+		  }
+		  
+		  reader.readAsDataURL(input.files[0]);
+		  }
+		}
+		  
+		$("#imgInput").change(function(){
+		   readURL(this);
+	});
+		
+				
+		
+		$("#addchat").on("click",function(){
+		
+			addchat();
+		});
+		
+	});
+	
+
+	function addchat(){
+		var title=$("#ctitle").val();
+		var category=$("#ccategory").val();
+		var addpost=$("#addpost").val();
+		if(title.length < 1){
+			alert("방제목을 입력해주세요");
+		}
+		else{
+			
+			if(category.length < 1){
+				alert("카테고리를 선택해주세요");
+			}
+			else{
+				
+				alert("확인");
+				
+			}	
+		}
+	}	
+	
+
+	
+</script>
+
+
 <style>
 #Loadpage{
 width:100%;
@@ -85,6 +144,8 @@ align:center;
 
 #addpost{
 	margin-left:30%;
+	
+	margin-top : 30px;
 }
 
 #ctitle{
@@ -92,12 +153,40 @@ align:center;
 	
 }
 
+#addchat{
+margin-left:28%;
+}
+
+#image_section{
+	
+	position:relative;
+	width: 800px;
+	height:600px;
+	
+}
+#imgInput{
+	
+	
+	position:relative;
+	
+}
+
+#imagebox{
+	
+	width: 800px;
+	height:600px;
+}
 
 
 </style>
 
 
 <body>
+
+
+<script>
+
+</script>
 
 
   <!-- Navigation -->
@@ -150,8 +239,8 @@ align:center;
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="page-heading">
-            <h1>Contact Me</h1>
-            <span class="subheading">Have questions? I have answers.</span>
+            <h1>채팅방 만들기</h1>
+            <span class="subheading">토론주제를 정하는 채팅방</span>
           </div>
         </div>
       </div>
@@ -160,7 +249,7 @@ align:center;
 
   <!-- Main Content -->
  <!-- action="addchat" method="post" -->
- <form id="addpost">
+ <form id="addpost" action="addchat" method="post" enctype="multipart/form-data">
  	
  	<p>방 제목 : <input id="ctitle" name="ctitle"> 
  	
@@ -176,8 +265,16 @@ align:center;
   	 	 <option value="기타">기타</option>
 	</select>
  	</p>
- 	<button id="addchat" onclick="return addchat()">만들기</button>
- 
+	<div>
+	<p>썸네일 :
+  	 <input type='file' name="cimage1" id="imgInput"/> <br>
+  	 </p>
+  	 <div id="imagebox">
+  	 <img id="image_section" src="#" alt="your image"/><br>
+	 </div>
+	</div>
+	
+ 	<button id="addchat" type="button">만들기</button>
  </form>
  	
  
@@ -236,33 +333,7 @@ align:center;
   <!-- Custom scripts for this template -->
   <script src="/resources/js/clean-blog.min.js"></script>
 	
-	<script>
-		function addchat(){
-			var title=$("#ctitle").val();
-			var category=$("#ccategory").val();
-			var addpost=$("#addpost").val();
-			if(title.length < 1){
-				alert("방제목을 입력해주세요");
-			}
-			else{
-				
-				if(category.length < 1){
-					alert("카테고리를 선택해주세요");
-				}
-				else{
-					
-					alert("확인");
-					
-				}
-				
-				
-			}
-			
-			
-			
-		}	
-	
-	</script>
+
 </body>
 
 </html>

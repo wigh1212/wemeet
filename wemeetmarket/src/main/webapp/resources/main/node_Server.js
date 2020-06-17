@@ -19,6 +19,7 @@ var io = socketio.listen(server);
 io.sockets.on('connection', function (socket) {
 	var room=null;
 	var user = new Array();
+	var a=0;
 	// join 이벤트
     socket.on('join', function(data){
         socket.join(data);
@@ -29,16 +30,55 @@ io.sockets.on('connection', function (socket) {
     	room=data.room;
     	
     	if(data.status==1){
-    		 io.sockets.in(data.room).emit('message', data);
+    		 
+    		user[a]=data.name;
+    		 
+    		a++;	 
+    		
+    		io.sockets.in(data.room).emit('message', {
+    			status:data.status,
+                name: data.name,
+                message: data.message,
+                room:data.room,
+                userlist:user
+            });
     	}
     	else{
         // 클라이언트의 message 이벤트를 발생시킵니다.     
-    	 io.sockets.in(data.room).emit('message', data);
+    	 io.sockets.in(data.room).emit('message', {
+ 			status:data.status,
+            name: data.name,
+            message: data.message,
+            room:data.room,
+            userlist:user
+        });
     	}
 
     });
-    socket.on('disconnection',function(data){
-    	socket.disconnet();
-    });
+    
+     socket.on('disconnect', () => {
+    	 	
+    	 
+    	 
+    	 socket.disconnect();
+    	 
+    	a=0;	 
+    	socket.on('message', function (data) {
+    	    
+    	
+    	io.sockets.in(data.room).emit('message', {
+         		status:2
+        	 });
+    		
+
+    	 });
+    	 
+    	 
+    
+     });
+    
+    
+    
+    
    
 });

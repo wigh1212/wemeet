@@ -11,7 +11,7 @@ public class ChatVO {
 	
 	private String ccategory;
 
-	private String ccontent;
+	private String cimage;
 	
 	private Date cregdate;
 	

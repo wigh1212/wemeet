@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.zerock.domain.ChatVO;
+import org.zerock.domain.upload;
 import org.zerock.service.ChattingService;
 
 import lombok.AllArgsConstructor;
@@ -24,7 +27,7 @@ public class ChattingController {
 	
 	private ChattingService service;
 	
-	
+	private upload up;		
 	@GetMapping("/chattingroom")
 	public String chattingroom(ChatVO chat,Model model){
 		
@@ -61,8 +64,26 @@ public class ChattingController {
 	}
 	
 	@PostMapping("/addchat")
-	public String addchat(ChatVO chat) {
+	public String addchat(ChatVO chat,MultipartHttpServletRequest request) {
+		
+		
+		
+		MultipartFile file = request.getFile("cimage1");
+		 
+		 
+		String cimage=up.uploadFileName(file);            // 경로 붙여서 리턴
+	
+		cimage=up.fileUpload(file, cimage);					  // 썸네일 이미지를 , 경로에다 저장
+		
+		 
+	
+		cimage=cimage.replace("C:\\lacture\\final\\wemeetmarket\\src\\main\\webapp\\resources\\img\\", "");
+		
+		chat.setCimage(cimage);
+		
+		
 		service.addchattingroom(chat);
+		
 		
 		return "/chat/chattingroom";
 		

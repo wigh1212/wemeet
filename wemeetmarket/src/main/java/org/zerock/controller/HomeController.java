@@ -26,24 +26,22 @@ public class HomeController {
 		
 		if(("sell").equals(cri.getKeyword())) {
 			
-			return "home";
+			return "redirect:/seller/selllist";
 		}
 		
 		else if(("buy").equals(cri.getKeyword())){
 			
 			
 			
-			return "home";
+			return "redirect:/buyer/buylist";
 			
 		}
 		else if( ("chat").equals(cri.getKeyword())){
 			
-			System.out.println("토론장 접근");
+		
 			
 			return "redirect:/chat/chattinglist";
-			
-			
-			
+
 		}
 		
 		
