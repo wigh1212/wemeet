@@ -24,8 +24,8 @@ public class HomeController {
 	
 		
 		
-		if(("sel").equals(cri.getKeyword())) {
-	
+		if(("sell").equals(cri.getKeyword())) {
+			
 		}
 		
 		else if(("buy").equals(cri.getKeyword())){
