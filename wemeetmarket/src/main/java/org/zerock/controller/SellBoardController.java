@@ -31,9 +31,8 @@ public class SellBoardController {
 	private SellboardService service;
 	private upload up;		
 	@GetMapping("/uploadsell")
-	public void uploadsell(@RequestParam("mid")String mid,Model model) {
+	public void uploadsell(Model model) {
 		
-		model.addAttribute("mid",mid);
 		
 	}
 	

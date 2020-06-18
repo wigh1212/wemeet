@@ -24,8 +24,95 @@
 
   <!-- Custom styles for this template -->
   <link href="/resources/css/clean-blog.min.css" rel="stylesheet">
+     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
 
 </head>
+<script>
+	$(document).ready(function(){
+		var address=$("#saddress").val();
+		  $("#imgInput1").on('change', function(){
+       	  	 readURL1(this);
+    	  });
+		  
+		  $("#imgInput2").on('change', function(){
+	       	  	 readURL2(this);
+	      });
+			  
+		  if(address!=null){
+		  kakaomap();
+		  }
+  	});
+  	
+ 	function readURL1(input) {
+   	   if (input.files && input.files[0]) {
+   	      var reader = new FileReader();
+   	      reader.onload = function (e) {
+   	         $('#image_section1').attr('src', e.target.result);
+   		      }
+    	     reader.readAsDataURL(input.files[0]);
+      	}
+   	   else{
+   		   alert("이미지 파일을 올려주세요");
+   		   $("#imgInput1").val()=null;
+   	   }
+   	   
+ 	}
+ 
+
+ 	function readURL2(input) {
+   	   if (input.files && input.files[0]) {
+   	      var reader = new FileReader();
+   	      reader.onload = function (e) {
+   	         $('#image_section2').attr('src', e.target.result);
+   		      }
+    	     reader.readAsDataURL(input.files[0]);
+      	}
+   		else{
+		   alert("이미지 파일을 올려주세요");
+		   $("#imgInput2").val()=null;
+	   }
+ 	}
+	
+	
+
+
+</script>
+
+
+<style>
+#sname{
+  width:85%;
+}
+#scontent{
+ width:100%;
+  resize: none; 
+ 
+}
+ #imagebox{
+	
+	width: 800px;
+	height:600px;
+	 border:1px solid black;
+}
+#image_section1,#image_section2{
+	
+	position:relative;
+	width: 800px;
+	height:600px;
+	
+	
+}
+#tname{
+ width:100%;
+}
+
+
+#sphone,#smoney,#saddress{
+width:100%;
+}
+</style>
 
 <body>
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -89,13 +176,53 @@
 
   <!-- Main Content -->
   <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio, adipisci quas excepturi maxime quae totam ducimus consectetur?</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius praesentium recusandae illo eaque architecto error, repellendus iusto reprehenderit, doloribus, minus sunt. Numquam at quae voluptatum in officia voluptas voluptatibus, minus!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consequuntur magnam, excepturi aliquid ex itaque esse est vero natus quae optio aperiam soluta voluptatibus corporis atque iste neque sit tempora!</p>
-      </div>
-    </div>
+  	<input name="mid" type="hidden" value=${member.mid }/>
+    <div id="tname">판매글 제목  </div> <input id="sname" name="sname"> 
+ 	
+	<select name="ccategory" id="ccategory">
+    	<option value="">카테고리</option>
+   		 <option value="가전제품">가전제품</option>
+  	 	 <option value="전자">전자</option>
+  	 	 <option value="식료품">식료품</option>
+  	 	 <option value="반려동물">반려동물</option>
+  	 	 <option value="중고차">중고차</option>
+  	 	 <option value="유아/장난감">유아/장난감</option>
+  	 	 <option value="레저/여행">레저/여행</option>
+  	 	 <option value="기타">기타</option>
+	</select>
+ 	
+ 	<p></p>
+ 	<div id="tname"> 상품 설명 </div>
+ 	 <textarea id="scontent" name="scontent" rows="8"></textarea>
+ 	
+ 	 <p></p>  
+ 	 <div id="tname"> 썸네일 <br>
+ 	  <input type='file' name="sthumb1" id="imgInput1"/> </div>
+ 	 <div id="imagebox">
+  	 <img id="image_section1" src="#" alt="your image"/>
+	 </div> 	
+ 	 <p></p>  
+ 	 <div id="tname"> 상품 이미지  <br>
+ 	  <input type='file' name="simage1" id="imgInput2"/> </div>
+ 	 <div id="imagebox">
+  	 <img id="image_section2" src="#" alt="your image"/>
+	 </div> 	
+	 <p></p>
+	 <div id="tname"> 연락가능한 전화번호  </div>
+ 	 <input id="sphone" name="sphone" />
+ 	 <p></p>
+ 	 <div id="tname"> 판매 가격 </div>
+ 	 <input id="smoney" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" name="smoney" />
+ 	 <p></p>
+ 	 <div id="tname"> 거래 위치 <button type="button" onclick="execPostCode()">찾기</button> </div>
+ 	  <input id="saddress" name="saddress" readonly />
+ 	 	 	   <!-- kakao map -->
+               <em class="link"> <a href="javascript:void(0);" class="mapApi" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum')">
+                  
+<!--                   onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=900, height=600')"> -->
+               </a></em>
+               <div id="map" style="width: 100%; height: 500px;"></div>
+ 	 
   </div>
 
   <hr>
@@ -166,6 +293,49 @@
 
   <!-- Custom scripts for this template -->
   <script src="/resources/js/clean-blog.min.js"></script>
+  
+  
+  
+  <!-- kakaomap  -->
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6b2fc6d94ec9c5613e598349717d630e&libraries=services"></script>
+  <script>
+    //주소
+     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+         mapOption = {
+          center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표33.450701            126.570667
+          level: 3 // 지도의 확대 레벨
+         };  
+	
+     // 지도를 생성합니다    
+     var map = new kakao.maps.Map(mapContainer, mapOption); 
+     // 주소-좌표 변환 객체를 생성합니다
+     var geocoder = new kakao.maps.services.Geocoder();
+     // 주소로 좌표를 검색합니다
+     geocoder.addressSearch(${sellboard.saddress}, function(result, status) {
+         // 정상적으로 검색이 완료됐으면 
+          if (status === kakao.maps.services.Status.OK) {
+             var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+       // 결과값으로 받은 위치를 마커로 표시합니다
+       var marker = new kakao.maps.Marker({
+           map: map,
+           position: coords
+       });
+
+       // 인포윈도우로 장소에 대한 설명을 표시.
+       var infowindow = new kakao.maps.InfoWindow({
+          //업체명 받아오기'
+           content: '<div style="width:150px;text-align:center;padding:6px 0; font-style:normal;">거래 위치</div>'
+       });
+       infowindow.open(map, marker);
+       // 지도의 중심을 결과값으로 받은 위치로 이동.
+       map.setCenter(coords);
+   		} 
+	});
+  
+     
+</script>
+
+  
 
 </body>
 
