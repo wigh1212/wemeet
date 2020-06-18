@@ -29,8 +29,7 @@
 </head>
 <script>
 	$(document).ready(function(){
-		var address=$("#saddress").val();
-		  $("#imgInput1").on('change', function(){
+	  $("#imgInput1").on('change', function(){
        	  	 readURL1(this);
     	  });
 		  
@@ -38,9 +37,7 @@
 	       	  	 readURL2(this);
 	      });
 			  
-		  if(address!=null){
-		  kakaomap();
-		  }
+
   	});
   	
  	function readURL1(input) {
@@ -106,6 +103,10 @@
  width:100%;
 }
 
+#divimg{
+	border:1px solid black;
+  
+}
 
 #sphone,#smoney,#saddress{
 width:100%;
@@ -177,31 +178,31 @@ width:100%;
   	
   	
  	<h2>${sellboard.scategory}/${sellboard.sname}</h2>
- 	<div id="tname"> 상품 설명 </div>
- 	 <textarea id="scontent" name="scontent" rows="8"></textarea>
+ 	<h3>작성자:${sellboard.mid} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 작성일:${sellboard.sregdate }</h3>
+ 	 <div id="divimg"> 
+ 	 <img src="/resources/img/${sellboard.sthumb}" width="100%" height="500px" >
+ 	 </div>
+ 	 <p></p>
+ 	 <div id="divimg"> 
+ 	 <img src="/resources/img/${sellboard.simage}" width="100%" height="500px" >
+ 	 </div> 	
+ 	 <p></p>  
+ 	 <div>
+ 	 	${sellboard.scontent }
+ 	 </div>
  	
- 	 <p></p>  
- 	 <div id="tname"> 썸네일 <br>
- 	  <input type='file' name="sthumb1" id="imgInput1"/> </div>
- 	 <div id="imagebox">
-  	 <img id="image_section1" src="#" alt="your image"/>
-	 </div> 	
- 	 <p></p>  
- 	 <div id="tname"> 상품 이미지  <br>
- 	  <input type='file' name="simage1" id="imgInput2"/> </div>
- 	 <div id="imagebox">
-  	 <img id="image_section2" src="#" alt="your image"/>
-	 </div> 	
+ 	
+ 	
+ 	
 	 <p></p>
-	 <div id="tname"> 연락가능한 전화번호  </div>
- 	 <input id="sphone" name="sphone" />
+	 <p></p>
+	 <div id="tname">전화번호 :${sellboard.sphone }</div>
  	 <p></p>
- 	 <div id="tname"> 판매 가격 </div>
- 	 <input id="smoney" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" name="smoney" />
+ 	 <div id="tname"> 판매 가격 :${sellboard.smoney } </div>
+ 	 
  	 <p></p>
- 	 <div id="tname"> 거래 위치 <button type="button" onclick="execPostCode()">찾기</button> </div>
- 	  <input id="saddress" name="saddress" readonly />
- 	 	 	   <!-- kakao map -->
+ 	 <div id="tname"> 거래 위치:${sellboard.saddress } 
+ 	  	 	 	   <!-- kakao map -->
                <em class="link"> <a href="javascript:void(0);" class="mapApi" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum')">
                   
 <!--                   onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=900, height=600')"> -->
@@ -295,7 +296,7 @@ width:100%;
      // 주소-좌표 변환 객체를 생성합니다
      var geocoder = new kakao.maps.services.Geocoder();
      // 주소로 좌표를 검색합니다
-     geocoder.addressSearch(${sellboard.saddress}, function(result, status) {
+     geocoder.addressSearch('${sellboard.saddress }', function(result, status) {
          // 정상적으로 검색이 완료됐으면 
           if (status === kakao.maps.services.Status.OK) {
              var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
@@ -315,7 +316,8 @@ width:100%;
        map.setCenter(coords);
    		} 
 	});
-  
+     
+     
      
 </script>
 
