@@ -24,138 +24,11 @@
 
   <!-- Custom styles for this template -->
   <link href="/resources/css/clean-blog.min.css" rel="stylesheet">
-<<<<<<< HEAD
-   
-<style>
-   
-   #t{
-=======
+
      <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 
->>>>>>> refs/remotes/origin/master
 
-   margin-left:340px;
-   }
-   #tx{
-   
-   width:680px;
-   height:40px;
-   
-      margin-left:20px;   
-   }
-   #c{
-   margin-top:20px;
-   margin-left:350px;
-   margin-bottom:200px;
-   
-   }
-   #cx{
-      
-      width:680px;
-      height:480px;
-      margin-top:16px;
-      margin-left:40px;
-   }
-   #m{   
-      margin-top:30px;
-      margin-left:340px;
-      margin-bottom:30px;
-      height:20px;
-   }
-   #mx{
-       border:1px solid rgb(0, 0, 0);
-      margin-left:470px;
-   
-      margin-top:30px;
-      width:300px;
-      height:250px;
-   }
-   
-   #fu{
-      margin-top:20px;
-      margin-left:210px;
-      
-      
-   }
-   #m2{
-      margin-right:2px;
-      margin-left:340px;
-      margin-bottom:40px;
-      margin-top:70px;
-      
-   
-   }
-   #mx2{
-          border:1px solid rgb(0, 0, 0);
-      margin-left:470px;
-      margin-bottom:10px;
-      margin-top:20px;
-      width:300px;
-      height:250px;
-      
-   }
-   
-   #fu2{
-      margin-left:650px;
-      margin-bottom:10px;
-      margin-top:10px;
-   }
-   #p{
-      margin-top:20px;
-      margin-left:350px;
-      
-   }
-   #px{
-      
-      width:220px;
-      height:40px;
-      margin-left:30px;
-   }
-   #v{
-      
-      margin-left:380px;
-   }
-   
-   #vx{
-      width:220px;
-   
-      margin-left:40px;
-      margin-top:5px;
-      
-   }
-   #e{
-   margin-left:350px;
-   margin-top:10px;
-   margin-bottom:50px;
-   }
-   
-   #ex{
-   margin-top:5px;
-   margin-left:35px;
-   width:400px;
-   height:150px;
-   }
-   #a{
-   width:180px;
-   margin-left:620px;
-   }
-   #s{
-   margin-left:10px;
-
-   }
-   
-   #r{
-   margin-left:30px;
-   width:100px;
-   
-   }
-   #top{
-   margin-left:900px;
-   }
-   
-
-</style>
 </head>
 <script>
 	$(document).ready(function(){
@@ -247,11 +120,9 @@ width:100%;
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-<<<<<<< HEAD
       <a class="navbar-brand" href="index.html">Start Bootstrap</a>
-=======
+
      <a href="/"> <img src="/resources/img/logo.png" width="400px" height="100px" class="navbar-brand"/> </a>
->>>>>>> refs/remotes/origin/master
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -306,8 +177,7 @@ width:100%;
   </header>
 
   <!-- Main Content -->
-<<<<<<< HEAD
-=======
+
   <div class="container">
   	<form action="upload">
   	<input name="mid" type="hidden" value=${member.mid }/>
@@ -358,89 +228,13 @@ width:100%;
                <div id="map" style="width: 100%; height: 500px;"></div>
  	 </form>
   </div>
->>>>>>> refs/remotes/origin/master
+
 
   <hr>
 
   <!-- Footer -->
   <footer>
-  
-      <table class="table table-striped table-bordered table-hover"  id="f2">
-           <div id="t">판매글 제목
-              <input type="text" id="tx"/> 
-              <select name="scategory" id="scategory">
-         		 <option value="">카테고리</option>
-        		  <option value="가전제품">가전제품</option>
-        		  <option value="전자">전자</option>
-     		     <option value="식료품">식료품</option>
-    		      <option value="반려동물">반려동물</option>
-       			   <option value="중고차">중고차</option>
- 		         <option value="유아/장난감">유아/장난감</option>
-       			   <option value="레저/여행">레저/여행</option>
-     		     <option value="기타">기타</option>
-  			 </select>
-           </div>
-         
-         <div id="c" style="float:left;">
-            상품설명
-         </div>
-         <textarea cols="50" rows="8" id="cx"></textarea>
-         
-         <div id="m" style="float:left;"> 
-            상품이미지
-         
-         </div>
-         
-         <div id="mx">
-            
-         </div>
-         <button id="fu">
-            파일업로드
-         </button>
-         
-         <div id="m2" style="float:left;"> 
-            상품이미지
-         
-         </div>
-         
-         <div id="mx2">
-   
-         </div>
-         
-         <button id="fu2">
-            파일업로드
-         </button>      
-         
-         <div id="p">
-            전화번호
-            <input type="text" id="px"/>
-         </div>
-         
-         <div id="v">
-            가격
-            <input type="text" id="vx"/>
-         </div>
-         
-         <div id="e" style="float:left;">
-            거래위치
-            
-         </div>
-         <textarea cols="50" rows="8" id="ex"></textarea>
-         
 
-         <div>
-            <input type="text" style="float:left;" id="a"/>
-         </div>
-         <button id="s">
-            찾기
-         </button> 
-         
-         <button id="r">
-            등록하기
-         </button>         
-         
-   
-  
     <div class="container">
         <a href="#" id="top">TOP</a>
       <div class="row">
