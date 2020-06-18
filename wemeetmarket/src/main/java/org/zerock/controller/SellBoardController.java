@@ -82,7 +82,7 @@ public class SellBoardController {
 	
 	
 	@GetMapping("/selectone")
-	public void selectone(@RequestParam("sno")long sno,Model model,@RequestParam("mid")String mid) {
+	public void selectone(@RequestParam("sno")long sno,Model model) {
 		
 		  SellboardVO sellboard = service.read(sno);
 		  model.addAttribute("sellboard",sellboard);
