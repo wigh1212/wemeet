@@ -32,7 +32,6 @@
 </head>
 <script>
 	$(document).ready(function(){
-		var address=$("#saddress").val();
 		  $("#imgInput1").on('change', function(){
        	  	 readURL1(this);
     	  });
@@ -41,9 +40,7 @@
 	       	  	 readURL2(this);
 	      });
 			  
-		  if(address!=null){
-		  kakaomap();
-		  }
+		
   	});
   	
  	function readURL1(input) {
@@ -113,6 +110,13 @@
 #sphone,#smoney,#saddress{
 width:100%;
 }
+
+#submitbtn{
+
+margin-top : 5%;
+margin-left: 94%;
+
+}
 </style>
 
 <body>
@@ -120,7 +124,6 @@ width:100%;
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand" href="index.html">Start Bootstrap</a>
 
      <a href="/"> <img src="/resources/img/logo.png" width="400px" height="100px" class="navbar-brand"/> </a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -179,11 +182,11 @@ width:100%;
   <!-- Main Content -->
 
   <div class="container">
-  	<form action="upload">
+  	<form action="upload" method="post" id="addform" enctype="multipart/form-data">
   	<input name="mid" type="hidden" value=${member.mid }/>
     <div id="tname">판매글 제목  </div> <input id="sname" name="sname"> 
  	
-	<select name="ccategory" id="ccategory">
+	<select name="scategory" id="scategory">
     	<option value="">카테고리</option>
    		 <option value="가전제품">가전제품</option>
   	 	 <option value="전자">전자</option>
@@ -220,13 +223,10 @@ width:100%;
  	 <p></p>
  	 <div id="tname"> 거래 위치 <button type="button" onclick="execPostCode()">찾기</button> </div>
  	  <input id="saddress" name="saddress" readonly />
- 	 	 	   <!-- kakao map -->
-               <em class="link"> <a href="javascript:void(0);" class="mapApi" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum')">
-                  
-<!--                   onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=900, height=600')"> -->
-               </a></em>
-               <div id="map" style="width: 100%; height: 500px;"></div>
  	 </form>
+ 	  <button type="button" id="submitbtn" onclick="return submitform()" >등록</button>	 	   
+ 	 
+ 	 
   </div>
 
 
@@ -302,46 +302,32 @@ width:100%;
   <!-- Custom scripts for this template -->
   <script src="/resources/js/clean-blog.min.js"></script>
   
-  
-  
-  <!-- kakaomap  -->
-  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6b2fc6d94ec9c5613e598349717d630e&libraries=services"></script>
   <script>
-    //주소
-     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-         mapOption = {
-          center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표33.450701            126.570667
-          level: 3 // 지도의 확대 레벨
-         };  
-	
-     // 지도를 생성합니다    
-     var map = new kakao.maps.Map(mapContainer, mapOption); 
-     // 주소-좌표 변환 객체를 생성합니다
-     var geocoder = new kakao.maps.services.Geocoder();
-     // 주소로 좌표를 검색합니다
-     geocoder.addressSearch('서울 용산구 신흥로7길 38 (용산동2가)', function(result, status) {
-         // 정상적으로 검색이 완료됐으면 
-          if (status === kakao.maps.services.Status.OK) {
-             var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-       // 결과값으로 받은 위치를 마커로 표시합니다
-       var marker = new kakao.maps.Marker({
-           map: map,
-           position: coords
-       });
-
-       // 인포윈도우로 장소에 대한 설명을 표시.
-       var infowindow = new kakao.maps.InfoWindow({
-          //업체명 받아오기'
-           content: '<div style="width:150px;text-align:center;padding:6px 0; font-style:normal;">거래 위치</div>'
-       });
-       infowindow.open(map, marker);
-       // 지도의 중심을 결과값으로 받은 위치로 이동.
-       map.setCenter(coords);
-   		} 
-	});
   
-     
-</script>
+  	function submitform(){
+  	var sname=$("#sname").val();
+  	var scontent=$("#scontent").val();
+  	var sphone=$("#sphone").val();
+  	var smoney=$("#smoney").val();
+  	var saddress=$("#saddress").val();
+  	var form=$("#addform");
+  	if(sname&&scontent&&sphone&&smoney&&saddress){
+  		
+  		form.submit();
+  		
+  	}
+  	else{
+  		alert("빈칸을 확인해주세요(썸네일/이미지 제외)");
+  		
+  	}
+  		
+  	}
+  
+  
+  </script>
+  
+  
+
   
   <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
                   <script>

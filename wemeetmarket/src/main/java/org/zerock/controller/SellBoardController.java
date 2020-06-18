@@ -36,52 +36,39 @@ public class SellBoardController {
 	
 	@GetMapping("/uploadsell")
 	public void uploadsell(Model model) {
-<<<<<<< HEAD
-=======
-		
->>>>>>> refs/remotes/origin/master
-		
+
 	}
 	
 	@PostMapping("/upload")
-	public String upload(HttpServletRequest request, SellboardVO sellboard,MultipartHttpServletRequest request1) {
+	public String upload(SellboardVO sellboard,MultipartHttpServletRequest request1) {
 		
 		try {
 		//		HttpServletRequest request,
 	
-		 String content="";
-		 int i=0;
-		 
+	
 		System.out.println(sellboard.toString());
-		 MultipartFile file = request1.getFile("sthumb");
-		 MultipartFile file1 = request1.getFile("simage");
+		 MultipartFile file = request1.getFile("sthumb1");
+		 MultipartFile file1 = request1.getFile("simage1");
 		 
 		 
 		String sthumb=up.uploadFileName(file);            // 경로 붙여서 리턴
 		String simage=up.uploadFileName(file1);			  // 경로 붙여서 리턴
 	
-		String ssthumb=up.fileUpload(file, sthumb);					  // 썸네일 이미지를 , 경로에다 저장
+		sthumb=up.fileUpload(file, sthumb);					  // 썸네일 이미지를 , 경로에다 저장
 		
-		String ssimage=up.fileUpload(file1, simage);					  // 이미지를, 경로에다 저장
+		simage=up.fileUpload(file1, simage);					  // 이미지를, 경로에다 저장
 		 
-		ssthumb=ssthumb.replace("C:\\lacture\\final\\wemeetmarket\\src\\main\\webapp\\resources\\img\\","");
+		sthumb=sthumb.replace("C:\\lacture\\final\\wemeet\\wemeetmarket\\src\\main\\webapp\\resources\\img\\","");
 		
-		simage=simage.replace("C:\\lacture\\final\\wemeetmarket\\src\\main\\webapp\\resources\\img\\", "");
+		simage=simage.replace("C:\\lacture\\final\\wemeet\\wemeetmarket\\src\\main\\webapp\\resources\\img\\", "");
 		
-		sellboard.setSthumb(ssthumb);
+		sellboard.setSthumb(sthumb);
 		sellboard.setSimage(simage);
 		
-		 
-		do {
-		 content +=(String)request.getParameter("scontent"+(i+1));
-		 content +=":";
-		 i++;
+		
+		
+		sellboard.setScontent(sellboard.getScontent().replace("\r\n","<br>"));
 
-		}while(request.getParameter("scontent"+(i+1))!=null);
-
-		sellboard.setScontent(content);
-
-	    System.out.println(sellboard.toString());
 	    service.insert(sellboard);
 	    
 	    		

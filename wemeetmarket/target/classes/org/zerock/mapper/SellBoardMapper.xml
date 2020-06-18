@@ -12,8 +12,8 @@ select * from selboard where sno > 0 order by sno asc
 
 <!-- 판매글 쓰기 -->
 <insert id="insert">
-	insert into SELBOARD (SNO,MID,SNAME,SCATEGORY,SREGDATE,SCONTENTSSTHUMB,SSIMAGE,SMONEY,SADDRESS,SPHONE )
-values (sno_sequence.nextval,#{mid}, #{sname},#{scategory},sysdate,#{scontent},#{ssthumb},#{ssimage},#{smoney},#{SADDRESS},#{SPHONE})
+	insert into SELBOARD (SNO,MID,SNAME,SCATEGORY,SREGDATE,SCONTENT,STHUMB,SIMAGE,SMONEY,SADDRESS,SPHONE )
+values (sno_sequence.nextval,#{mid}, #{sname},#{scategory},sysdate,#{scontent},#{sthumb},#{simage},#{smoney},#{saddress},#{sphone})
 </insert>
 
 <!-- 판매글 링크 클릭시 -->

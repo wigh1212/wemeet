@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class upload {
 	Random rd = new Random();
 	
-	final String firstPath = "C:\\lacture\\final\\wemeetmarket\\src\\main\\webapp\\resources\\img\\";
+	final String firstPath = "C:\\lacture\\final\\wemeet\\wemeetmarket\\src\\main\\webapp\\resources\\img\\";
 	
 	public String uploadFileName( MultipartFile file) {
 		
