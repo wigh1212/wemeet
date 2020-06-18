@@ -227,7 +227,7 @@
                		<tr>
                			<th>${sellboardlist.sno }</th>
                			<th><img src="/resources/img/${sellboardlist.sthumb }" width=150px; height=100px;></th>
-               			<th><a href="/seller/read?sno=${sellboardlist.sno }">${sellboardlist.sname }</a></th>
+               			<th><a href="/seller/selectone?sno=${sellboardlist.sno }">${sellboardlist.sname }</a></th>
                			<th>${sellboardlist.mid }</th>
                			<th>${sellboardlist.sregdate }</th>
                		</tr>

@@ -174,22 +174,9 @@ width:100%;
 
   <!-- Main Content -->
   <div class="container">
-  	<input name="mid" type="hidden" value=${member.mid }/>
-    <div id="tname">판매글 제목  </div> <input id="sname" name="sname"> 
- 	
-	<select name="ccategory" id="ccategory">
-    	<option value="">카테고리</option>
-   		 <option value="가전제품">가전제품</option>
-  	 	 <option value="전자">전자</option>
-  	 	 <option value="식료품">식료품</option>
-  	 	 <option value="반려동물">반려동물</option>
-  	 	 <option value="중고차">중고차</option>
-  	 	 <option value="유아/장난감">유아/장난감</option>
-  	 	 <option value="레저/여행">레저/여행</option>
-  	 	 <option value="기타">기타</option>
-	</select>
- 	
- 	<p></p>
+  	
+  	
+ 	<h2>${sellboard.scategory}/${sellboard.sname}</h2>
  	<div id="tname"> 상품 설명 </div>
  	 <textarea id="scontent" name="scontent" rows="8"></textarea>
  	
