@@ -36,6 +36,10 @@ public class SellBoardController {
 	
 	@GetMapping("/uploadsell")
 	public void uploadsell(Model model) {
+<<<<<<< HEAD
+=======
+		
+>>>>>>> refs/remotes/origin/master
 		
 	}
 	
