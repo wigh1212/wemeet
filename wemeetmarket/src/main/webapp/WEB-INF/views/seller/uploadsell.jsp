@@ -269,7 +269,7 @@ margin-left: 94%;
         </div>
       </div>
     </div>
-</table>
+
   </footer>
 
 

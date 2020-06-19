@@ -30,53 +30,19 @@
   	 #writer, #regdate{
   	 width:180px;
   	 }
-     #f1{
-     border:1px solid #222847;
-     width:300px;
-     margin-left:50px;
-     height:600px;
-     margin-top:50px;
-     }
-     
-     #f2{
-     border:1px solid #222847;
-     width:1070px;
-     margin-left:400px;
-     height:160px;
-     }
-     #c{
-     width:500px;
-     }
-     .btn{
-     margin-left:1270px;
-    
-     
-     }
-     td{
-     height:150px;
-     }
-     #p{
-     width:200px;
-     }
-     #n{
-     width:100px;
-     }
-     #ff{
-     margin-top:50px;
-     }
-     #s{
-     margin-top:10px;
-     }
-     #t{
-     margin-left:1170px;
-     margin-top:100px;
-     }
+  
   	 #sellbutton{
   	 	text-align:center;
   	 	border: 1px solid black;
   	 	display:inline-block;
   	 	width: 50px;
   	 }
+  	 #boardlistWriteBttn {
+    	margin-top: 30px;
+    	float: right;
+    	padding: 10px;
+    	width: 200px;
+	}
   </style>
 </head>
 
@@ -102,7 +68,7 @@
             <a class="nav-link" href="/buyer/buyboardlist">삽니다</a>
           </li>
           <li class="nav-item">
-             <a class="nav-link" href="/chat/chattingroom">상품토론</a>
+             <a class="nav-link" href="/chat/chattinglist">상품토론</a>
           </li>
           <c:if test="${empty member||member.magree=='N'}">
         <li class="nav-item">
@@ -141,84 +107,8 @@
   </header>
 
   <!-- Post Content -->
-  <article>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          
-
-       
-        </div>
-      </div>
-    </div>
-  </article>
-
-  <hr>
-<a href="/seller/uploadsell">글작성</a>
-  <!-- Footer -->
-  <footer>
-    
-     <div>
-        
-           <div class="table table-striped table-bordered table-hover" id="f1" style="float:left";>
-            <div id="ff">
-               <div id="s">
-                  <div style="text-align: center;">디지털/가전</div>
-               </div>
-               
-               <div id="s">
-                  <div style="text-align: center;">가구/인테리어</div>
-               </div>
-               
-               <div id="s">
-                  <div style="text-align: center;">유아용품</div>
-               </div>
-               
-               <div id="s">
-                  <div style="text-align: center;">생활/가공식품</div>
-               </div>
-               
-               <div id="s">
-                  <div style="text-align: center;">스포츠/레저</div>
-               </div>
-               
-               <div id="s">
-                  <div style="text-align: center;">여성잡화</div>
-               </div>
-               
-               <div id="s">
-                  <div style="text-align: center;">여성의류</div>
-               </div>
-               
-               <div id="s">
-                  <div style="text-align: center;">남성잡화/패션</div>
-               </div>
-               
-               <div id="s">
-                  <div style="text-align: center;">게임/취미</div>
-               </div>
-               
-               <div id="s">
-                  <div style="text-align: center;">뷰티/미용</div>
-               </div>
-               
-               <div id="s">
-                  <div style="text-align: center;">반려동물용품</div>
-               </div>
-               
-               <div id="s">
-                  <div style="text-align: center;">도서/티켓/음반</div>
-               </div>
-               
-               <div id="s">
-                  <div style="text-align: center;">삽니다</div>
-               </div>
-            </div>
-      </div>
-     </div>
-        
-     
-     <div>
+	<div class="container">
+       <div>
            
            <table class="table table-striped table-bordered table-hover"  id="f2">
                <thead>
@@ -272,6 +162,9 @@
 		</form>
 		<a id="boardlistWriteBttn" class="btn btn-primary"
 			href="/seller/uploadsell" role="button">글작성</a>
+			
+		<div class="section">			
+		<a href="#" id="top">TOP</a>	
   		<div class='row'>
 			<div class="col-lg-12">
 				
@@ -302,7 +195,44 @@
                   </form>
 			</div>
 		</div>
-		
+     </div>
+  <hr>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+        
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy; Your Website 2019</p>
+        </div>
+      </div>
+    </div>
 
 		<!-- <script src="/board/boardlist.js"></script> -->
 	<script type="text/javascript">
