@@ -193,7 +193,7 @@ width:100%;
             <a class="nav-link" href="/buyer/buyboardlist">삽니다</a>
           </li>
           <li class="nav-item">
-             <a class="nav-link" href="/chat/chattingroom">상품토론</a>
+             <a class="nav-link" href="/chat/chattinglist">상품토론</a>
           </li>
           <c:if test="${empty member||member.magree=='N'}">
 		  <li class="nav-item">
