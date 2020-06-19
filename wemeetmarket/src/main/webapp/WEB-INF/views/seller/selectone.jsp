@@ -36,10 +36,29 @@
 		  $("#imgInput2").on('change', function(){
 	       	  	 readURL2(this);
 	      });
-			  
-
+		  
+		 starclick(); 
+		  
+		  
   	});
   	
+	
+	function starclick(){
+		$('.starRev span').click(function(){
+			  $(this).parent().children('span').removeClass('on');
+			
+			  $(this).addClass('on').prevAll('span').addClass('on');
+			  $(this).parent().children('span').attr('name','sellstar');
+			  
+			  $("#testinput").val($(this).text());
+			  return false;
+		});
+
+	}
+	
+	
+	
+	
  	function readURL1(input) {
    	   if (input.files && input.files[0]) {
    	      var reader = new FileReader();
@@ -54,7 +73,10 @@
    	   }
    	   
  	}
- 
+ 	
+ 	
+ 	
+ 	
 
  	function readURL2(input) {
    	   if (input.files && input.files[0]) {
@@ -111,6 +133,39 @@
 #sphone,#smoney,#saddress{
 width:100%;
 }
+
+
+
+
+
+.starR1{
+    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat -52px 0;
+    background-size: auto 100%;
+    width: 15px;
+    height: 30px;
+    float:left;
+    text-indent: -9999px;
+    cursor: pointer;
+}
+.starR2{
+    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
+    background-size: auto 100%;
+    width: 15px;
+    height: 30px;
+    float:left;
+    text-indent: -9999px;
+    cursor: pointer;
+}
+.starR1.on{background-position:0 0;}
+.starR2.on{background-position:-15px 0;}
+
+
+#contentboard{
+	 border:1px solid black;
+}
+
+
+
 </style>
 
 <body>
@@ -187,8 +242,8 @@ width:100%;
  	 <img src="/resources/img/${sellboard.simage}" width="100%" height="500px" >
  	 </div> 	
  	 <p></p>  
- 	 <div>
- 	 	${sellboard.scontent }
+ 	 <div id="contentboard">
+ 	 	<strong>${sellboard.scontent }</strong>
  	 </div>
  	
  	
@@ -196,12 +251,12 @@ width:100%;
  	
 	 <p></p>
 	 <p></p>
-	 <div id="tname">전화번호 :${sellboard.sphone }</div>
+	 <div id="tname">전화번호 :<strong>&nbsp;${sellboard.sphone }</strong></div>
  	 <p></p>
- 	 <div id="tname"> 판매 가격 :${sellboard.smoney } </div>
+ 	 <div id="tname"> 판매 가격 :<strong>&nbsp;${sellboard.smoney }원</strong> </div>
  	 
  	 <p></p>
- 	 <div id="tname"> 거래 위치:${sellboard.saddress } 
+ 	 <div id="tname"> 거래 위치:<strong>&nbsp;${sellboard.saddress }</strong> 
  	  	 	 	   <!-- kakao map -->
                <em class="link"> <a href="javascript:void(0);" class="mapApi" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum')">
                   
@@ -210,6 +265,25 @@ width:100%;
                <div id="map" style="width: 100%; height: 500px;"></div>
  	 
   </div>
+  <hr>
+  <h1>리뷰</h1>
+ 	<p> 
+ 	<div class="starRev">
+ 	 <span class="starR1 on" value=0.5>0.5</span>
+ 	 <span class="starR2"value=1 >1</span>
+ 	 <span class="starR1"value=1.5>1.5</span>
+ 	 <span class="starR2"value=2>2</span>
+ 	 <span class="starR1"value=2.5>2.5</span>
+ 	 <span class="starR2"value=3>3</span>
+ 	 <span class="starR1"value=3.5>3.5</span>
+ 	 <span class="starR2"value=4>4</span>
+ 	 <span class="starR1"value=4.5>4.5</span>
+ 	 <span class="starR2"value=5>5</span>
+	</div>
+	<input id="testinput" name="star" readonly/>점</p>
+  
+  
+  
   <hr>
 
   <!-- Footer -->
