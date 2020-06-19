@@ -23,6 +23,8 @@
 
   <!-- Custom styles for this template -->
   <link href="/resources/css/clean-blog.min.css" rel="stylesheet">
+   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
   
   <style>
   	 #writer, #regdate{
@@ -69,7 +71,12 @@
      margin-left:1170px;
      margin-top:100px;
      }
-  
+  	 #sellbutton{
+  	 	text-align:center;
+  	 	border: 1px solid black;
+  	 	display:inline-block;
+  	 	width: 50px;
+  	 }
   </style>
 </head>
 
@@ -246,7 +253,7 @@
 				<c:forEach var="num" begin="${pageMaker.startPage }"
 					end="${pageMaker.endPage }">
 					<li class="paginate_button ${pageMaker.cri.pageNum == num ? "active":"" }">
-					<a href="${num}">${num}</a>
+					<a id="sellbutton" href="${num}">${num}</a>
 					</li>
 				</c:forEach>
 
@@ -257,7 +264,7 @@
 			</ul>
 		</div>
         </div>
-        <form id='actionForm' action="/seller/sellboardlist" method='get'>
+        <form id='actionForm' action="sellboardlist" method='get'>
 			<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum }'>
 			<input type='hidden' name='amount' value='${pageMaker.cri.amount }'>
 			<input type='hidden' name='type' value='<c:out value="${pageMaker.cri.type }"/>'>
@@ -310,7 +317,7 @@
    			console.log('click');
    			
    			actionForm.find("input[name='pageNum']").val($(this).attr("href"));
-   			actionForm.submit();
+   			actionForm.submit(); 
    		});
    		
    		var searchForm = $("#searchForm");
@@ -336,7 +343,7 @@
    			e.preventDefault();
    			actionForm.append("<input type='hidden' name='sno' value='"+
    		$(this).attr("href")+"'>");
-   			actionForm.attr("action","/seller/get");
+   			actionForm.attr("action","/seller/selectone");
    			actionForm.submit();
    		});
  	});

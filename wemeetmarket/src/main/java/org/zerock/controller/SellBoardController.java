@@ -58,9 +58,9 @@ public class SellBoardController {
 		
 		simage=up.fileUpload(file1, simage);					  // 이미지를, 경로에다 저장
 		 
-		sthumb=sthumb.replace("C:\\lacture\\final\\wemeet\\wemeetmarket\\src\\main\\webapp\\resources\\img\\","");
+		sthumb=sthumb.replace("C:\\Lecture\\final\\wemeet\\wemeetmarket\\src\\main\\webapp\\resources\\img\\","");
 		
-		simage=simage.replace("C:\\lacture\\final\\wemeet\\wemeetmarket\\src\\main\\webapp\\resources\\img\\", "");
+		simage=simage.replace("C:\\Lecture\\final\\wemeet\\wemeetmarket\\src\\main\\webapp\\resources\\img\\", "");
 		
 		sellboard.setSthumb(sthumb);
 		sellboard.setSimage(simage);
@@ -87,13 +87,7 @@ public class SellBoardController {
 		  SellboardVO sellboard = service.read(sno);
 		  model.addAttribute("sellboard",sellboard);
 	}
-	
-	@GetMapping({"/get","/modify"})
-	public void get(@RequestParam("adno") Long sno, Model model, @ModelAttribute("cri") Criteria cri) {
-		log.info("/get or /modify");
-		model.addAttribute("adminboard",service.read(sno));
-	}
-	
+
 	@PostMapping("/modify")
 	public String modify(SellboardVO sellboard, RedirectAttributes rttr) {
 		if(service.modify(sellboard)) {
@@ -109,7 +103,7 @@ public class SellBoardController {
 		model.addAttribute("sellboardlist", service.getlist(cri));
 		
 		 int total = service.getTotal(cri);
-		 
+		 model.addAttribute("total",total);
 		 model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
 	
