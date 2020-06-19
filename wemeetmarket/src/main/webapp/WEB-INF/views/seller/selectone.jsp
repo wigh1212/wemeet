@@ -163,7 +163,10 @@ width:100%;
 #contentboard{
 	 border:1px solid black;
 }
-
+#review{
+	resize: none; 
+    overflow:auto;
+}
 
 
 </style>
@@ -281,7 +284,7 @@ width:100%;
  	 <span class="starR2"value=5>5</span>
 	</div>
 	<input id="testinput" name="star" readonly/>점</p>
-  
+  <textarea id="review" cols=100; rows=5;></textarea>
   
   
   <hr>
