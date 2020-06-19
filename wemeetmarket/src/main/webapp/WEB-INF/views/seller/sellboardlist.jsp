@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -225,54 +226,122 @@
                
                <c:forEach var ="sellboardlist" items="${sellboardlist }">
                		<tr>
-               			<th>${sellboardlist.sno }</th>
+               			<th><c:out value="${sellboardlist.sno }"/></th>
                			<th><img src="/resources/img/${sellboardlist.sthumb }" width=150px; height=100px;></th>
-               			<th><a href="/seller/selectone?sno=${sellboardlist.sno }">${sellboardlist.sname }</a></th>
-               			<th>${sellboardlist.mid }</th>
-               			<th>${sellboardlist.sregdate }</th>
+               			<th><a class='move' href='<c:out value="${sellboardlist.sno }"/>'><c:out value="${sellboardlist.sname }"/></a></th>
+               			<th><c:out value="${sellboardlist.mid }"/></th>
+               			<th><fmt:formatDate pattern="yyyy-MM-dd"
+                                		 value="${sellboardlist.sregdate }"/></th>
                		</tr>
                </c:forEach>
             </table>
             
-		
-		
+            <div class='pull-right'>
+			<ul class="pagination">
+				<c:if test="${pageMaker.prev }">
+				<li class="paginate_button previous"><a
+					href="${pageMaker.startPage -1}">Previous</a></li>
+				</c:if>
+
+				<c:forEach var="num" begin="${pageMaker.startPage }"
+					end="${pageMaker.endPage }">
+					<li class="paginate_button ${pageMaker.cri.pageNum == num ? "active":"" }">
+					<a href="${num}">${num}</a>
+					</li>
+				</c:forEach>
+
+				<c:if test="${pageMaker.next }">
+					<li class="paginate_button next"><a
+					href="${pageMaker.endPage +1 }">Next</a></li>
+				</c:if>
+			</ul>
+		</div>
         </div>
-        
-     </div>
-    <div class="container">
-    <a href="#" id="t">TOP</a>
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <ul class="list-inline text-center">
-            <li class="list-inline-item">
-              <a href="#">
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-          </ul>
-          <p class="copyright text-muted">Copyright &copy; Your Website 2019</p>
-        </div>
-      </div>
-    </div>
+        <form id='actionForm' action="/seller/sellboardlist" method='get'>
+			<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum }'>
+			<input type='hidden' name='amount' value='${pageMaker.cri.amount }'>
+			<input type='hidden' name='type' value='<c:out value="${pageMaker.cri.type }"/>'>
+			<input type='hidden' name='keyword' value='<c:out value="${pageMaker.cri.keyword }"/>'>
+		</form>
+		<a id="boardlistWriteBttn" class="btn btn-primary"
+			href="/seller/uploadsell" role="button">글작성</a>
+  		<div class='row'>
+			<div class="col-lg-12">
+				
+				<form id='searchForm' action="/seller/sellboardlist" method='get'>
+                  <select name='type'>
+                    <option value=""
+                      <c:out value="${pageMaker.cri.type == null?'selected':'' }"/>>--</option>
+                      <option value="T"
+                      <c:out value="${pageMaker.cri.type eq'T'?'selected':'' }"/>>제목</option>
+                      <option value="C"
+                      <c:out value="${pageMaker.cri.type eq'C'?'selected':'' }"/>>내용</option>
+                      <option value="W"
+                      <c:out value="${pageMaker.cri.type eq'W'?'selected':'' }"/>>작성자</option>
+                      <option value="TC"
+                      <c:out value="${pageMaker.cri.type eq'TC'?'selected':'' }"/>>제목 or 내용</option>
+                      <option value="TW"
+                      <c:out value="${pageMaker.cri.type eq'TW'?'selected':'' }"/>>제목 or 작성자</option>
+                      <option value="TWC"
+                      <c:out value="${pageMaker.cri.type eq'TWC'?'selected':'' }"/>>제목 or 작성자 or 내용 </option>
+                    </select>
+                       <input type='text' name='keyword'
+                         value='<c:out value="${pageMaker.cri.keyword }"/>' />
+                       <input type='hidden' name='pageNum'
+                         value='<c:out value="${pageMaker.cri.pageNum }"/>' />
+                       <input type="hidden" name='amount' 
+                          value='<c:out value="${pageMaker.cri.amount }"/>' />
+                       <button class='btn btn-default'>검색</button>
+                  </form>
+			</div>
+		</div>
+		
+
+		<!-- <script src="/board/boardlist.js"></script> -->
+	<script type="text/javascript">
+ 	$(document).ready(function(){
+
+   		var actionForm = $("#actionForm");
+   		
+   		$(".paginate_button a").on("click", function(e){
+   			
+   			e.preventDefault();
+   			
+   			console.log('click');
+   			
+   			actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+   			actionForm.submit();
+   		});
+   		
+   		var searchForm = $("#searchForm");
+   		
+   		$("#searchForm button").on("click", function(e){
+   			if(!searchForm.find("option:selected").val()){
+       			alert("검색종류를 선택하세요.");
+       			return false;
+       		}
+   			
+   			if(!searchForm.find("input[name='keyword']").val()){
+   				alert("키워드를 입력하세요");
+   				return false;
+   			}
+   			searchForm.find("input[name='pageNum']").val("1");
+   			e.preventDefault();
+   			
+   			searchForm.submit();
+   		});
+   		
+   		$(".move").on("click", function(e){
+   			
+   			e.preventDefault();
+   			actionForm.append("<input type='hidden' name='sno' value='"+
+   		$(this).attr("href")+"'>");
+   			actionForm.attr("action","/seller/get");
+   			actionForm.submit();
+   		});
+ 	});
+ 	
+  </script>
   </footer>
 
 
