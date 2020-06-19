@@ -183,7 +183,7 @@ margin-left: 94%;
 
   <div class="container">
   	<form action="upload" method="post" id="addform" enctype="multipart/form-data">
-  	<input name="mid" type="hidden" value=${member.mid }/>
+  	<input name="mid" type="hidden" value=${member.mid }>
     <div id="tname">판매글 제목  </div> <input id="sname" name="sname"> 
  	
 	<select name="scategory" id="scategory">

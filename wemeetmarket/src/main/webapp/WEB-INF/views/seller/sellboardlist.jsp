@@ -43,6 +43,11 @@
     	padding: 10px;
     	width: 200px;
 	}
+	#thumb{
+		width:200px;
+		
+	}
+	
   </style>
 </head>
 
@@ -113,20 +118,23 @@
            <table class="table table-striped table-bordered table-hover"  id="f2">
                <thead>
                   <tr>
-                     <th id=n>번호</th>
-                     <th id=p>썸네일</th>
+                    
+                     <th id=thumb style="text-align: center;">썸네일</th>
                      <th id=c style="text-align: center;">제목</th>
-                     <th id=writer>작성자</th>
-                     <th id=regdate>작성일</th>                  
+                     <th id=writer style="text-align: center;">작성자</th>
+                     <th id=money style="text-align: center;">가격</th>
+                     <th id=regdate style="text-align: center;">작성일</th>                  
                   </tr>
                </thead>
                
                <c:forEach var ="sellboardlist" items="${sellboardlist }">
                		<tr>
-               			<th><c:out value="${sellboardlist.sno }"/></th>
+               		
                			<th><img src="/resources/img/${sellboardlist.sthumb }" width=150px; height=100px;></th>
-               			<th><a class='move' href='<c:out value="${sellboardlist.sno }"/>'><c:out value="${sellboardlist.sname }"/></a></th>
+               			<th><a class='move' href='<c:out value="${sellboardlist.sno }"/>'><c:out value="${sellboardlist.sname }"/></a><br></br>
+               			 <small>${sellboardlist.saddress}</small></th>
                			<th><c:out value="${sellboardlist.mid }"/></th>
+               			<th> <c:out value="${sellboardlist.smoney }"/>원</th>
                			<th><fmt:formatDate pattern="yyyy-MM-dd"
                                 		 value="${sellboardlist.sregdate }"/></th>
                		</tr>
