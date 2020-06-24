@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -49,12 +50,14 @@ public class ChattingController {
 		return "home";
 	}
 	
-	@GetMapping("/deletechat")
-	public String deletechat(ChatVO chat) {
+	@PostMapping("/deletechat")
+	@ResponseBody
+	public int deletechat(ChatVO chat) {
 		
+		System.out.println("딜리트 접근");
 		service.deletechat(chat);
 		
-		return "/chat/chattingroom";
+		return 1;
 	}
 	
 	@GetMapping("/addchat")
@@ -67,6 +70,7 @@ public class ChattingController {
 	public String addchat(ChatVO chat,MultipartHttpServletRequest request) {
 		
 		
+		log.info(chat);
 		
 		MultipartFile file = request.getFile("cimage1");
 		 
@@ -77,15 +81,17 @@ public class ChattingController {
 		
 		 
 	
-		cimage=cimage.replace("C:\\lacture\\final\\wemeetmarket\\src\\main\\webapp\\resources\\img\\", "");
+		cimage=cimage.replace("C:\\Lecture\\final\\wemeet\\wemeetmarket\\src\\main\\webapp\\resources\\img\\", "");
 		
 		chat.setCimage(cimage);
 		
 		
+		
 		service.addchattingroom(chat);
 		
+		ChatVO room=service.create(chat);
 		
-		return "/chat/chattingroom";
+		return "redirect:/chat/chattingroom?cno="+room.getCno();
 		
 	}
 

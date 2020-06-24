@@ -9,6 +9,8 @@ public class ChatVO {
 	
 	private String ctitle;
 	
+	private String mid;
+	
 	private String ccategory;
 
 	private String cimage;

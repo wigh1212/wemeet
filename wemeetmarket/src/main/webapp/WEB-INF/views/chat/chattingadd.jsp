@@ -52,8 +52,7 @@
 		   readURL(this);
 	});
 		
-				
-		
+
 		$("#addchat").on("click",function(){
 		
 			addchat();
@@ -65,7 +64,7 @@
 	function addchat(){
 		var title=$("#ctitle").val();
 		var category=$("#ccategory").val();
-		var addpost=$("#addpost").val();
+		var addpost=$("#addpost");
 		if(title.length < 1){
 			alert("방제목을 입력해주세요");
 		}
@@ -76,7 +75,7 @@
 			}
 			else{
 				
-				alert("확인");
+				addpost.submit();
 				
 			}	
 		}
@@ -251,7 +250,9 @@ margin-left:28%;
  <!-- action="addchat" method="post" -->
  <form id="addpost" action="addchat" method="post" enctype="multipart/form-data">
  	
+ 	<input type="hidden" name="mid" value="${member.mid}">
  	<p>방 제목 : <input id="ctitle" name="ctitle"> 
+ 	
  	
 	<select name="ccategory" id="ccategory">
     	<option value="">카테고리</option>

@@ -165,6 +165,7 @@ align:center;
        </c:forEach>
 	</c:if> 	
  	</div>
+ 	<a href="/chat/addchat"> 글쓰기</a>
  
  
  

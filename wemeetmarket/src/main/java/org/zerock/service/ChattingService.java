@@ -17,4 +17,9 @@ public interface ChattingService {
 	
 	public void updatechat(ChatVO chat);
 	
+	
+	public ChatVO create(ChatVO chat);
+
+	
+	
 }

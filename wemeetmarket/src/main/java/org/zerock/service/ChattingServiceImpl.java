@@ -45,6 +45,8 @@ public class ChattingServiceImpl implements ChattingService{
 		return mapper.get(chat);
 	}
 
-	
+	public ChatVO create(ChatVO chat) {
+		return mapper.create(chat);
+	}
 	
 }
