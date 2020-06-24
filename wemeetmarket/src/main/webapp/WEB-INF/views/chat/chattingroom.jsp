@@ -91,24 +91,32 @@ ul{
 		
 	}
     $(document).ready(function($){
+    var userlist=new Set();
 	/* $("#loadpage").load("/resources/main/HTMLPage.html"); */
-	
-    var rCheck = false;
+	var userarray=new Array();
+    var rCheck = false;			// 최초 입장 체크
     
+	const memberlist=new Set();  // 방장의 유저리스트 수집
+
+	var usergroup =""; 			// 유저 정보 담을 문자열
+	
 	const mid=$("#mid").val();
+	const chatid=$("#cahtid").val();
 	const room = $("#cno").val();
     
 	var socket = io.connect("http://127.0.0.1:52273/");
 	 
 	
 	// 변수를 선언합니다.
-
-
-	socket.emit('join',room); 
+	socket.emit('join',{ 
+        name:mid, 
+        room:room
+    }); 
+	
 	if(mid!=null){	
 	  rCheck=duck(socket,mid,room,rCheck);
 	} 
-	
+
 	// 이벤트를 연결합니다.
     socket.on('message', function (data) {
         // 추가할 문자열을 만듭니다.
@@ -119,14 +127,77 @@ ul{
         	output += '</li>';
         	$('#chatcontent').append(output);
         	$('#chatcontent').scrollTop($('#chatcontent').prop('scrollHeight'));
-        	
-        	console.log(data);
-        }
-        else if(data.status==2){
-        	
+    		
+        	if(mid==chatid){
+        		memberlist.add(data.name);
+        		console.log(memberlist);
+        		
+        		for ( let item of memberlist ) {
+        			usergroup += item+",";
+                }
+
+        		socket.emit('userlist',{
+        			userlist:usergroup,
+        			room:room
+        		});
+        		usergroup="";
+        	}
+        }        
+        else if(data.status==2){	
         	rCheck = false;
-        
          }
+        else if(data.status==3){
+        	
+        	var output = '';
+        	output += '<li>';
+        	output += '    <p id="name">'+ data.message + '</p>';
+        	output += '</li>';
+        	$('#chatcontent').append(output);
+        	$('#chatcontent').scrollTop($('#chatcontent').prop('scrollHeight'));
+        
+        	
+        }
+        else if(data.status==4){
+        	var output = '';
+        	output += '<li>';
+        	output += '    <p id="name"><strong>'+data.name+"</strong>" + data.message + '</p>';
+        	output += '</li>';
+        	$('#chatcontent').append(output);
+        	$('#chatcontent').scrollTop($('#chatcontent').prop('scrollHeight'));
+
+        	
+        	if(mid==chatid){
+        		memberlist.delete(data.name);
+        		
+        		for ( let item of memberlist ) {
+        			usergroup += item+",";
+                }
+
+        		socket.emit('userlist',{
+        			userlist:usergroup,
+        			room:room
+        		});
+        		usergroup="";
+        	}
+        
+            var uselist = '';
+            var userreset='';
+            for(var i=0; i<userarray.length; i++){
+            	if(userarray[i]==data.name){
+            	
+            	}
+            	else{
+           		 uselist += '<p>'+ userarray[i] + '</p>';
+           		 userreset+=userarray[i]+",";
+            	}
+		      }
+            userarray=userreset.split(',');
+            userreset='';
+            usergroup="";
+            $('#userlist').html(uselist);
+        	
+        	
+        }
         else{
         	var output = '';
         	output += '<li>';
@@ -139,7 +210,22 @@ ul{
         }
       
 
+        
     });
+	
+	
+    socket.on('userstatus',function(data){
+     /*     memberlist=data; */
+     	    console.log(data);
+      		userarray=data.split(',');
+     	
+             var uselist = '';
+             for(var i=0; i<userarray.length; i++){
+            	 uselist += '<p>'+ userarray[i] + '</p>';
+
+ 		      }
+             $('#userlist').html(uselist);
+      });
     
 	
     // 버튼을 클릭할 때
@@ -149,6 +235,8 @@ ul{
             name: mid,
             message: $('#message').val(),
             room:room
+            
+            
         });
         $("#message").val('');
     });
@@ -170,30 +258,12 @@ ul{
         	}
         }
     });
-    
-
-	
 });
 
 
     
     
 </script>
-<script type="text/javascript">
-	$(window).on("beforeunload",function(){
-		
-	
-        
-        socket.emit('message', {
-			status:1,
-            name: id,
-            message: "님이 나가셨습니다",
-            room:room1
-        });
-    	return "페이지를 벗어나시겠습니까?";
-	});
-
-	</script>
 
 <script src="http://127.0.0.1:52273/socket.io/socket.io.js"></script>
 
@@ -272,6 +342,7 @@ ul{
       <div class="col-lg-8 col-md-10 mx-auto">
         <h2>${chatting.ctitle}</h2>
     	<input type="hidden" id="mid" value="${member.mid}">
+    	<input type="hidden" id="cahtid" value="${chatting.mid}">
     	<input type="hidden" id="cno" value="${chatting.cno}">
     	 
   

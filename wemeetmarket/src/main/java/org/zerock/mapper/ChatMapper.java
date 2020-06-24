@@ -8,7 +8,7 @@ public interface ChatMapper {
 	 
 	        
 	public List<ChatVO> getlist();
-	
+	public ChatVO create(ChatVO chat);
 	
 	public void insert(ChatVO chat);
 	

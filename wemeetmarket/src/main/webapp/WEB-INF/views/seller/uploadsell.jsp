@@ -220,7 +220,8 @@ margin-left: 94%;
  	 <p></p>
  	 <div id="tname"> 판매 가격 </div>
  	 <input id="smoney" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" name="smoney" />
- 	 <p></p>
+ 	 <p></p><a href="/seller/modify?sno=${sellboard.sno }">수정</a>
+  
  	 <div id="tname"> 거래 위치 <button type="button" onclick="execPostCode()">찾기</button> </div>
  	  <input id="saddress" name="saddress" readonly />
  	 </form>

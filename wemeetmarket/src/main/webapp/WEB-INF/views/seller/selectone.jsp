@@ -270,6 +270,12 @@ width:100%;
   </div>
   <hr>
   <h1>리뷰</h1>
+  <a href="/seller/delete?sno=${sellboard.sno }&pageNum=${cri.pageNum}">삭제</a>
+  <a href="/seller/modify?sno=${sellboard.sno }">수정</a>
+  <a href="/seller/sellboardlist?pageNum=${cri.pageNum}">목록</a>
+  
+  
+ 
  	<p> 
  	<div class="starRev">
  	 <span class="starR1 on" value=0.5>0.5</span>
