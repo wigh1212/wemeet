@@ -39,6 +39,13 @@ public class SellBoardController {
 
 	}
 	
+	@GetMapping("/delete")
+	public String delete(SellboardVO sellboard, Criteria cri) {
+		
+		
+		return "redirect:/seller/sellboardlist?pageNum="+cri.getPageNum();
+	}
+	
 	@PostMapping("/upload")
 	public String upload(SellboardVO sellboard,MultipartHttpServletRequest request1) {
 		
@@ -82,10 +89,12 @@ public class SellBoardController {
 	
 	
 	@GetMapping("/selectone")
-	public void selectone(@RequestParam("sno")long sno,Model model) {
+	public void selectone(Criteria cri, @RequestParam("sno")long sno,Model model) {
 		
 		  SellboardVO sellboard = service.read(sno);
 		  model.addAttribute("sellboard",sellboard);
+		  model.addAttribute("cri", cri);
+		  
 	}
 
 	@PostMapping("/modify")
