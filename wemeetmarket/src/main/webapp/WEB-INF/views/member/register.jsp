@@ -62,9 +62,7 @@
  	  dataType: "json",
  	  success : function(data){
  		if(data==1){
- 			
  			location.href ='http://localhost:10000/';
- 		
  		}  
  		else if(data==2){
  			alert("이메일 인증을 완료하고 로그인하세요");

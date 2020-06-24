@@ -189,48 +189,8 @@ margin-left:28%;
 
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
-      <a href="/"> <img src="/resources/img/logo.png" width="400px" height="100px" class="navbar-brand"/> </a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-         <li class="nav-item">
-            <a class="nav-link" href="/">홈으로</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/seller/sellboardlist">판매</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/buyer/buyboardlist">삽니다</a>
-          </li>
-          <li class="nav-item">
-             <a class="nav-link" href="/chat/chattingroom">상품토론</a>
-          </li>
-          <c:if test="${empty member||member.magree=='N'}">
-		  <li class="nav-item">
-            <a class="nav-link" href="/member/register">login</a>
-          </li>
-		  <li class="nav-item">
-            <a class="nav-link" href="/member/register">회원가입</a>
-          </li>
-          </c:if>
-           <c:if test="${member.mid != null && member.magree=='Y'}">
-           <li class="nav-item">
-            <a class="nav-link" href="/member/register">내정보</a>
-          	</li>
-		 	 <li class="nav-item">
-            	<a class="nav-link" href="/member/logout">로그아웃</a>
-          	</li>
-          </c:if>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
+  <%@include file="/resources/main/header1.jsp"%>
+ 
   <!-- Page Header -->
   <header class="masthead" style="background-image: url('img/contact-bg.jpg')">
     <div class="overlay"></div>

@@ -169,64 +169,6 @@ public class MemberController {
 	
 	
 	
-	
-	
-	
-	
-	@RequestMapping(value="/clanding",method=RequestMethod.GET)
-	public void clanding() {
-		
-		
-	}
-	
-	
-	
-	@RequestMapping(value="/crecentorder",method=RequestMethod.GET)
-	public void crecentorder() {
-		
-		
-	}
-	
-	
-	@RequestMapping(value="/clecstatus",method=RequestMethod.GET)
-	public void clecstatus() {	
-		
-		
-	}
-	@RequestMapping(value="/unirequest",method=RequestMethod.GET)
-	public void unirequest() {
-		
-		
-	}
-	@RequestMapping(value="/cexit",method=RequestMethod.GET)
-	public void cexit() {
-		
-		
-	}
-	@RequestMapping(value="/cinfo",method=RequestMethod.GET)
-	public void cinfo() {
-		
-	}
-	
-	@RequestMapping(value="/unilec",method=RequestMethod.GET)
-	public void unilec() {
-		
-		
-	}
-	
-	@RequestMapping(value="/uniaccount",method=RequestMethod.GET)
-	public void uniaccount() {
-		
-		
-	}
-	
-	@RequestMapping(value="/ccart",method=RequestMethod.GET)
-	public void ccart() {
-		
-		
-	}
-	
-	
 
 	
 }
