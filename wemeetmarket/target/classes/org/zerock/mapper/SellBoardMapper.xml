@@ -73,7 +73,15 @@ values (sno_sequence.nextval,#{mid}, #{sname},#{scategory},sysdate,#{scontent},#
 
 <!-- 판매글 수정 -->
 <update id="update">
-	update selboard SNAME=#{sname},SCATEGORY=#{scategory},SCONTENT=#{scontent},SSTHUMB=#{ssthumb},SSIMAGE=#{ssimage},SMONEY=#{smoney},SADDRESS=#{saddress},SPHONE=#{sphone}
+	update selboard 
+	set SNAME=#{sname},
+	SCATEGORY=#{scategory},
+	SCONTENT=#{scontent},
+	STHUMB=#{sthumb},
+	SIMAGE=#{simage},
+	SMONEY=#{smoney},
+	SADDRESS=#{saddress},
+	SPHONE=#{sphone}
 	where sno=#{sno}
 </update>
 

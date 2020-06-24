@@ -97,12 +97,53 @@ public class SellBoardController {
 		  
 	}
 
-	@PostMapping("/modify")
-	public String modify(SellboardVO sellboard, RedirectAttributes rttr) {
-		if(service.modify(sellboard)) {
-			rttr.addFlashAttribute("result","success");
-		}
+	@GetMapping("/modifysell")
+	public void modifysell(@RequestParam("sno") long sno,Model model) {
 		
+		model.addAttribute("sellboard",service.read(sno));
+		
+	}
+	@PostMapping("/update")
+	public String modify(SellboardVO sellboard, RedirectAttributes rttr,MultipartHttpServletRequest request1 ) {
+		System.out.println(sellboard);
+		
+		try {
+			//		HttpServletRequest request,
+		
+		
+		
+			 MultipartFile file = request1.getFile("sthumb1");
+			 MultipartFile file1 = request1.getFile("simage1");
+			 
+			 
+			String sthumb=up.uploadFileName(file);            // 경로 붙여서 리턴
+			String simage=up.uploadFileName(file1);			  // 경로 붙여서 리턴
+		
+			sthumb=up.fileUpload(file, sthumb);					  // 썸네일 이미지를 , 경로에다 저장
+			
+			simage=up.fileUpload(file1, simage);					  // 이미지를, 경로에다 저장
+			 
+			sthumb=sthumb.replace("C:\\Lecture\\final\\wemeet\\wemeetmarket\\src\\main\\webapp\\resources\\img\\","");
+			
+			simage=simage.replace("C:\\Lecture\\final\\wemeet\\wemeetmarket\\src\\main\\webapp\\resources\\img\\", "");
+			
+			sellboard.setSthumb(sthumb);
+			sellboard.setSimage(simage);
+			
+			System.out.println(sellboard.toString());
+			
+			sellboard.setScontent(sellboard.getScontent().replace("\r\n","<br>"));
+			
+			service.update(sellboard);
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		
+		if (service.modify(sellboard)) {
+			rttr.addFlashAttribute("result", "success");
+		}
 		return "redirect:/seller/sellboardlist";
 	}
 	

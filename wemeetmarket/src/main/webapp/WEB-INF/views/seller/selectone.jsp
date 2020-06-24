@@ -231,7 +231,7 @@ width:100%;
   <hr>
   <h1>리뷰</h1>
   <a href="/seller/delete?sno=${sellboard.sno }&pageNum=${cri.pageNum}">삭제</a>
-  <a href="/seller/modify?sno=${sellboard.sno }">수정</a>
+  <a href="/seller/modifysell?sno=${sellboard.sno }">수정</a>
   <a href="/seller/sellboardlist?pageNum=${cri.pageNum}">목록</a>
   
   

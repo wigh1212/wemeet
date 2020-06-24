@@ -142,9 +142,10 @@ margin-left: 94%;
   <!-- Main Content -->
 
   <div class="container">
-  	<form action="upload" method="post" id="addform" enctype="multipart/form-data">
+  	<form action="update" method="post" id="addform" enctype="multipart/form-data">
   	<input name="mid" type="hidden" value=${member.mid }>
-    <div id="tname">판매글 제목  </div> <input id="sname" name="sname"> 
+  	<input name="sno" type="hidden" value="${sellboard.sno }"> 
+    <div id="tname">판매글 제목  </div> <input id="sname" name="sname" value="${sellboard.sname }"> 
  	
 	<select name="scategory" id="scategory">
     	<option value="">카테고리</option>
@@ -166,7 +167,7 @@ margin-left: 94%;
  	 <div id="tname"> 썸네일 <br>
  	  <input type='file' name="sthumb1" id="imgInput1"/> </div>
  	 <div id="imagebox">
-  	 <img id="image_section1" src="/resources/img/${sellboard.stumb }" alt="your image"/>
+  	 <img id="image_section1" src="/resources/img/${sellboard.sthumb }" alt="your image"/>
 	 </div> 	
  	 <p></p>  
  	 <div id="tname"> 상품 이미지  <br>
@@ -186,7 +187,7 @@ margin-left: 94%;
  	  <input id="saddress" name="saddress" readonly value=${sellboard.saddress } />
  	 </form>
  	  <button type="button" id="submitbtn" onclick="return submitform()" >등록</button>	 	   
- 	 
+ 	  <a href="/seller/modify?sno=${sellboard.sno }">수정</a>
  	 
   </div>
 
