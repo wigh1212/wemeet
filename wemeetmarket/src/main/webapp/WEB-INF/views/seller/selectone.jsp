@@ -230,8 +230,11 @@ width:100%;
   </div>
   <hr>
   <h1>리뷰</h1>
+  
+  <c:if test='${sellboard.mid == member.mid }'>
   <a href="/seller/delete?sno=${sellboard.sno }&pageNum=${cri.pageNum}">삭제</a>
   <a href="/seller/modifysell?sno=${sellboard.sno }">수정</a>
+  </c:if>
   <a href="/seller/sellboardlist?pageNum=${cri.pageNum}">목록</a>
   
   

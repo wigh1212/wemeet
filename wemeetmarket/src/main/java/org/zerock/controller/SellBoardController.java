@@ -42,6 +42,7 @@ public class SellBoardController {
 	@GetMapping("/delete")
 	public String delete(SellboardVO sellboard, Criteria cri) {
 		
+		service.delete(sellboard.getSno());
 		
 		return "redirect:/seller/sellboardlist?pageNum="+cri.getPageNum();
 	}
@@ -84,7 +85,7 @@ public class SellBoardController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/";
+		return "redirect:/seller/sellboardlist?pageNum=1&amaount=10";
 	}
 	
 	

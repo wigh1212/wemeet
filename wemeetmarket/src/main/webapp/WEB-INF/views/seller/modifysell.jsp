@@ -273,7 +273,8 @@ margin-left: 94%;
   	var smoney=$("#smoney").val();
   	var saddress=$("#saddress").val();
   	var form=$("#addform");
-  	if(sname&&scontent&&sphone&&smoney&&saddress){
+  	var scategory=$("#scategory").val();
+  	if(sname&&scontent&&sphone&&smoney&&saddress&&scategory){
   		
   		form.submit();
   		

@@ -180,7 +180,6 @@ margin-left: 94%;
  	 <div id="tname"> 판매 가격 </div>
  	 <input id="smoney" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" name="smoney" />
  	 <p></p><a href="/seller/modify?sno=${sellboard.sno }">수정</a>
-  
  	 <div id="tname"> 거래 위치 <button type="button" onclick="execPostCode()">찾기</button> </div>
  	  <input id="saddress" name="saddress" readonly />
  	 </form>
@@ -271,7 +270,8 @@ margin-left: 94%;
   	var smoney=$("#smoney").val();
   	var saddress=$("#saddress").val();
   	var form=$("#addform");
-  	if(sname&&scontent&&sphone&&smoney&&saddress){
+  	var scategory=$("#scategory").val();
+  	if(sname&&scontent&&sphone&&smoney&&saddress&&scategory){
   		
   		form.submit();
   		
