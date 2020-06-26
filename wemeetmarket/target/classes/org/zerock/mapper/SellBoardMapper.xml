@@ -33,7 +33,7 @@ select * from selboard where sno > 0 order by sno asc
    select
     sno, mid, sname, scategory , sregdate, scontent, sthumb, simage, smoney, sphone, saddress
       from
-      (select /*+INDEX_DESC(selboard pk_board) */
+      (select /*+INDEX_DESC(selboard pk_selboard) */
          rownum rn, sno, mid, sname, scategory , sregdate, scontent, sthumb, simage, smoney, sphone, saddress
       from
          selboard

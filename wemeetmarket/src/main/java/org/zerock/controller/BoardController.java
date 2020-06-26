@@ -1,5 +1,10 @@
 package org.zerock.controller;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +35,7 @@ public class BoardController {
    
    private upload up;
    private BoardService service;
-   
+
    @GetMapping("/list")
    public void list(Criteria cri, Model model) {
       
@@ -131,6 +136,8 @@ public class BoardController {
       adpicture=up.fileUpload(file, adpicture);                 // 썸네일 이미지를 , 경로에다 저장
       
               // 이미지를, 경로에다 저장
+
+ 
        
       adpicture=adpicture.replace("C:\\lacture\\final\\a_finalproject3\\src\\main\\webapp\\resources\\img\\","");
       

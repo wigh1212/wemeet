@@ -89,8 +89,12 @@
                
                <c:forEach var ="sellboardlist" items="${sellboardlist }">
                		<tr>
-               		
+               			<c:if test="${sellboardlist.sthumb==null }">
+               			<th><img src="/resources/img/noimage.png" width=150px; height=100px;></th>
+               			</c:if>
+               			<c:if test="${sellboardlist.sthumb!=null }">               			
                			<th><img src="/resources/img/${sellboardlist.sthumb }" width=150px; height=100px;></th>
+               			</c:if>
                			<th><a class='move' href='<c:out value="${sellboardlist.sno }"/>'><c:out value="${sellboardlist.sname }"/></a><br></br>
                			 <small>${sellboardlist.saddress}</small></th>
                			<th><c:out value="${sellboardlist.mid }"/></th>
@@ -128,9 +132,10 @@
 			<input type='hidden' name='type' value='<c:out value="${pageMaker.cri.type }"/>'>
 			<input type='hidden' name='keyword' value='<c:out value="${pageMaker.cri.keyword }"/>'>
 		</form>
+		<c:if test="${member.mid!=null }">
 		<a id="boardlistWriteBttn" class="btn btn-primary"
 			href="/seller/uploadsell" role="button">글작성</a>
-			
+		</c:if>	
 		<div class="section">			
 		<a href="#" id="top">TOP</a>	
   		<div class='row'>

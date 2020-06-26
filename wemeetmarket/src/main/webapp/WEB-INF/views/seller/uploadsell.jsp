@@ -33,11 +33,28 @@
 <script>
 	$(document).ready(function(){
 		  $("#imgInput1").on('change', function(){
-       	  	 readURL1(this);
+       	  	
+			  var ext = $('#imgInput1').val().split('.').pop().toLowerCase();
+			  
+			  
+			  if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+			      $('#imgInput1').val("");
+			      alert('이미지파일을 올려주세요 gif/png/jpg/jpeg');
+			  }else{
+		  
+			  readURL1(this);
+			  }
     	  });
 		  
 		  $("#imgInput2").on('change', function(){
-	       	  	 readURL2(this);
+			  var ext = $('#imgInput2').val().split('.').pop().toLowerCase();
+			  if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+				  $('#imgInput2').val("");
+				  alert('이미지파일을 올려주세요 gif/png/jpg/jpeg');
+			  }
+			  else{
+			  	readURL2(this);
+			  }
 	      });
 			  
 		

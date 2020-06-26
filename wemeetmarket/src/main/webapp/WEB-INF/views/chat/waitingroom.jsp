@@ -82,7 +82,29 @@ align:center;
 	height:200px;
 	float:left;
 }
-
+.btn{
+      text-decoration: none;
+      font-size:2rem;
+      color:white;
+      padding:10px 20px 10px 20px;
+      margin:20px;
+      display:inline-block;
+      border-radius: 10px;
+      transition:all 0.1s;
+      text-shadow: 0px 0px rgba(0, 0, 0, 0.44);
+      font-family: 'Lobster', cursive;
+      margin-left:85%;
+    }
+    .btn:active{
+      transform: translateY(3px);
+    }
+    .btn.blue{
+      background-color: #1f75d9;
+      border-bottom:5px solid #165195;
+    }
+    .btn.blue:active{
+      border-bottom:2px solid #165195;
+    }
 </style>
 
 
@@ -126,8 +148,9 @@ align:center;
        </c:forEach>
 	</c:if> 	
  	</div>
- 	<a href="/chat/addchat"> 글쓰기</a>
- 
+ 	<c:if test="${member.mid!=null }">
+ 	<a href="/chat/addchat" class="btn blue"> 글쓰기</a>
+	 </c:if>
  
  
  

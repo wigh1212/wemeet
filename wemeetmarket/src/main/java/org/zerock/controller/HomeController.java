@@ -23,29 +23,7 @@ public class HomeController {
 	public String home(Criteria cri,Model model) {
 	
 		
-		
-		if(("sell").equals(cri.getKeyword())) {
-			
-			return "redirect:/seller/selllist";
-		}
-		
-		else if(("buy").equals(cri.getKeyword())){
-			
-			
-			
-			return "redirect:/buyer/buylist";
-			
-		}
-		else if( ("chat").equals(cri.getKeyword())){
-			
-		
-			
-			return "redirect:/chat/chattinglist";
-
-		}
-		
-		
-		
+	
 		
 		return "home";
 		

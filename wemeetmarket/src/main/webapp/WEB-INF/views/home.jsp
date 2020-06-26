@@ -85,122 +85,13 @@
   </header>
 
   <!-- Main Content -->
-  	<!-- 사이드바 -->
-       <div id="jb-sidebar" >
-        <h2 id="">Home</h2>
-        <ul id="ulbar">
-          <li id="libar"><a href="/?keyword=sell">팝니다 !</a></li>
-          <li id="libar"><a href="/?keyword=buy">삽니다 !</a></li>
-          <li id="libar"><a href="/?keyword=chat">토론장</a></li>
-        </ul>
-      </div>
-	<!-- 사이드바 끝 -->
+	<div class="container">
+    
 
   
-  <c:if test="${selllist !=null }" >
-  <c:forEach items="${selllist}" var="selllist">
-  <div class="container">
-   
-    <div class="row">
-     <div>
-   		<img src="/resources/img/logo.png" id="imgdiv"  width=200px, height=300px>
-     </div>
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="post-preview">
-          <a href="post.html">
-            <h2 class="post-title" id="content">
-             	핸드폰 싸게 팝니다
-            </h2>
-            <h3 class="post-subtitle" id="content">
-              	기종:겔럭시S8
-            </h3>
-          </a>
-          <p class="post-meta" id="content">작성일자:
-            <a href="#">2020-06-15</a>
-            </p>
-        </div>
-        </div>
-        </div>
-        </div>
-
-        	<hr>
- 		 </c:forEach>
- 		<div class="clearfix">
-          <a class="btn btn-primary float-right" href="/chat/chattingroom">판매장으로 &rarr;</a>
-        </div>
- 		 
-        </c:if>
+        	
         
-        
-        
-        <c:if test="${chattinglist !=null }">
-        	<c:forEach items="${chattinglist}" var="chattinglist">	
-     
-        	  <div class="container">
-   			 <div class="row">
-   	 		 <div class="col-lg-8 col-md-10 mx-auto">
-   	    	 <div class="post-preview">
-         		 <a href="post.html">
-   	      	  	 <h2 class="post-title" id="content">
-   	          		${chattinglist.ctitle}
-   	        	 </h2>
-   	        	 <h3 class="post-subtitle" id="content">
-   	          	 	카테고리:${chattinglist.ccategory }
-    	     	   </h3>
-    	     	 </a>
-       	   	<p class="post-meta" id="content">작성일자:
-       	 	    <a href="#">${chattinglist.cregdate }</a>
-       	 	    </p>
-       		 	</div>
-       		 </div>
-       		 </div>
-       		 </div>
-       		 
-       		 <hr>        
-       		 </c:forEach>
-        <div class="clearfix">
-          <a class="btn btn-primary float-right" href="/chat/chattingroom">토론장으로 &rarr;</a>
-        </div>
-      
-        </c:if>
-        
-        
-        
-        <c:if test="${buylist !=null }" >
-  <c:forEach items="${buylist}" var="buylist">
-  <div class="container">
-   
-    <div class="row">
-     <div>
-   		<img src="/resources/img/logo.png" id="imgdiv"  width=200px, height=300px>
-     </div>
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="post-preview">
-          <a href="post.html">
-            <h2 class="post-title" id="content">
-             	핸드폰 싸게 팝니다
-            </h2>
-            <h3 class="post-subtitle" id="content">
-              	기종:겔럭시S8
-            </h3>
-          </a>
-          <p class="post-meta" id="content">작성일자:
-            <a href="#">2020-06-15</a>
-            </p>
-        </div>
-        </div>
-        </div>
-        </div>
-
-        	<hr>
- 		 </c:forEach>
- 		<div class="clearfix">
-          <a class="btn btn-primary float-right" href="/chat/waitingroom">판매장으로 &rarr;</a>
-        </div>
- 		 
-        </c:if>
-        
-        
+    </div>>
         
         <!-- Pager -->
       

@@ -82,13 +82,30 @@ io.sockets.on('connection', function (socket) {
     socket.on('userlist',function(data){
     	io.sockets.in(data.room).emit('userstatus',data.userlist);
     });
+    
+  
+    
      socket.on('disconnect', () => {
     	 if(roomlist.get("'"+socket.id+"'")!=null){
     		 // ajax 사용    		 
     		 io.sockets.in(roomlist.get("'"+socket.id+"'")).emit('message',{
     			 message:"방장님이 나가셨습니다",
     			 status:3
+    			
     		 });
+    		 $.ajax({
+				 url : "http:127.0.0.1:10000/chat/test",
+				 type : "POST",
+				 data : JSON.stringify({"cno":roomlist.get("'"+socket.id+"'")}),
+				 dataType: "json",
+				 contentType:'application/json; charset=utf-8',
+				 success : function(data){
+					 
+				 }
+			 });
+    		 
+    		 
+    		 
     		 $.ajax({
 					url : "http:127.0.0.1:10000/chat/deletechat",
 					type : "POST",
@@ -96,9 +113,13 @@ io.sockets.on('connection', function (socket) {
 					dataType: "json",
 					success : function(data){
 						roomlist.remove("'"+roomlist.get("'"+socket.id+"'")+"'");
-						roomtest.delete("'"+roomlist.get("'"+socket.id+"'")+"'");		
+						roomtest.delete("'"+roomlist.get("'"+socket.id+"'")+"'");
+						
+	
 					}
+			
     		 });
+			
     	 }
     	 io.sockets.in(room).emit('message',{
     		 name:user.get("'"+socket.id+"'"),
