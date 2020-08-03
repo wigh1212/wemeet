@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
+
 
 <html>
 
@@ -10,9 +12,48 @@
         <title>로그인 / 회원가입 폼 템플릿</title>
         <link rel="stylesheet" href="/resources/main/css/style.css">
     </head>
-    <body>
-        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+	var success= "사용가능한 id입니다.";
+	var fail = "이미 존재하는 id입니다."; 
+	function loginresult(){
+	
+	var $mid=$("#inputId").val();
+	
+	if($mid.length <1){
+		
+		$("#result").html("<p id='result1' style='color:red'>아이디를 입력해주세요</p>");
+		
+	}
+	else if($mid.length<6 || $mid.length>12){
+		$("#result").html("<p id='result1' style='color:red'>6~12자 아이디를 입력해주세요</p>");
+	}
+
+	else{
+		$.ajax({
+			url : "/member/loginresult",
+			type : "GET",
+			data : {"mid":$mid},
+			dataType: "json",
+			success : function(data){
+				if(data==1){
+					$("#result").html("<p id='result1' style='color:blue'>"+success+"</p");
+				}  
+				else{
+					$("#result").html("<p id='result1' style='color:red'>"+fail+"</p");
+				}
+ 	  		
+			}      
+		 });	
+		}
+	} 
+	
+</script>
+    
+    <body>
+        
 	<div id="header"></div> 
 	
 	 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
@@ -31,8 +72,7 @@
                     <button onclick="return loginhome()" type="button" class="submit" id="loginButton">로그인</button>
                 </form>
                 <form id="register" action="insert" method="post" class="input-group">
-                    <input type="text" name="mid"class="input-field" id="inputId" placeholder="아이디 입력" >
-                    <button type="button" onclick="return loginresult()">중복확인</button>
+                    <input type="text" name="mid"class="input-field" onKeyup="loginresult()" id="inputId" placeholder="아이디 입력" >
                     <label id="result"></label>
 					<input type="text" name="mname"class="input-field" id="inputName" placeholder="이름 입력" >
                     <input type="email" name="memail" class="input-field" id="inputEmail" placeholder="이메일 입력" >
@@ -79,8 +119,6 @@
  
  </script>
         <script>
-        var success= "사용가능한 id입니다.";
-		 var fail = "이미 존재하는 id입니다."; 
 		 
             var x = document.getElementById("login");
             var y = document.getElementById("register");
@@ -112,7 +150,7 @@
 			var detail=$("#detailAddress").val();
 			var email=$("#inputEmail").val();
 	   
-			var $result1 = $("#result1").val();
+			var $result1 = $("#result1").text();
 			var $memail = $("#inputEmail").val();
 		
 			var pw1=$("#inputPassword1").val()
@@ -210,25 +248,7 @@
 	}
    
 	
-	function loginresult(){
-		var $mid=$("#inputId").val();
-		$.ajax({
-			url : "/member/loginresult",
-			type : "GET",
-			data : {"mid":$mid},
-			dataType: "json",
-			success : function(data){
-				if(data==1){
-					$("#result").html("<input id='result1' value= '"+success+"' readonly='readonly'>");
-				}  
-				else{
-					$("#result").html("<input id='result1' value= '"+fail+"' readonly='readonly'>");
-				}
-	 	  	
-			}
-	      
-			});
-		}
+	
 		</script>
     </body>
 </html>

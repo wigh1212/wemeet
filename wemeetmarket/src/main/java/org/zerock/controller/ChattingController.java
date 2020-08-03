@@ -84,7 +84,7 @@ public class ChattingController {
 		 
 	
 		cimage=cimage.replace("C:\\Lecture\\final\\wemeet\\wemeetmarket\\src\\main\\webapp\\resources\\img\\", "");
-		
+		                        
 		chat.setCimage(cimage);
 		
 		

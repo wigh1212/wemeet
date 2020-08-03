@@ -13,7 +13,7 @@ public class upload {
 	Random rd = new Random();
 	
 	final String firstPath = "C:\\Lecture\\final\\wemeet\\wemeetmarket\\src\\main\\webapp\\resources\\img\\";
-	
+							
 	public String uploadFileName( MultipartFile file) {
 		
 	long time = System.currentTimeMillis(); 

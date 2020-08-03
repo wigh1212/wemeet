@@ -1,10 +1,5 @@
 package org.zerock.controller;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -50,6 +46,13 @@ public class BoardController {
       model.addAttribute("pageMaker", new PageDTO(cri, total));
       
    }
+   
+   
+   
+   
+   
+   
+   
 
    
    
@@ -159,6 +162,25 @@ public class BoardController {
       return "redirect:/board/get?adno="+adcomment.getAdno();
       
    }
+   
+   
+   @GetMapping("/listboard")
+   @ResponseBody
+   public void listboard(Criteria cri, Model model) {
+      
+      log.info("list: " + cri);
+      
+      model.addAttribute("list", service.getList(cri));
+      
+      int total = service.getTotal(cri);
+      
+      log.info("total: " + total);
+      
+      model.addAttribute("pageMaker", new PageDTO(cri, total));
+      
+   }
+   
+   
    
    
 }

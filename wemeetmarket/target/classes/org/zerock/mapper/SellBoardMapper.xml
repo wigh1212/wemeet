@@ -9,8 +9,12 @@
 select * from selboard where sno > 0 order by sno asc
 ]]>
 </select>
+
+
+
+
 <sql id="criteria">
-   <trim prefix="(" suffix=") AND" prefixOverrides="OR">
+   <trim prefix="(" suffix=") AND" prefixOverrides="OR"> 
       <foreach item='type' collection="typeArr">
          <trim prefix="OR">
             <choose>
@@ -28,6 +32,13 @@ select * from selboard where sno > 0 order by sno asc
       </foreach>
    </trim> 
 </sql>
+
+
+
+
+
+
+
   <select id="getListWithPaging" resultType="org.zerock.domain.SellboardVO">
    <![CDATA[
    select
@@ -48,9 +59,11 @@ select * from selboard where sno > 0 order by sno asc
 where rn > (#{pageNum} -1 ) * #{amount}   
 ]]>
 </select>
+
+
 <select id="getTotalConut" resultType="int">
    select count(*) from selboard
-   where 
+   where  
    <include refid="criteria"></include>
    sno > 0
 </select>
@@ -58,7 +71,7 @@ where rn > (#{pageNum} -1 ) * #{amount}
 <!-- 판매글 쓰기 -->
 <insert id="insert">
 	insert into SELBOARD (SNO,MID,SNAME,SCATEGORY,SREGDATE,SCONTENT,STHUMB,SIMAGE,SMONEY,SADDRESS,SPHONE )
-values (sno_sequence.nextval,#{mid}, #{sname},#{scategory},sysdate,#{scontent},#{sthumb},#{simage},#{smoney},#{saddress},#{sphone})
+values (sno_sequence.nextval,#{mid}, #{sname},#{scategory},sysdate,#{scontent},#{sthumb,jdbcType=VARCHAR},#{simage,jdbcType=VARCHAR},#{smoney},#{saddress},#{sphone})
 </insert>
 
 <!-- 판매글 링크 클릭시 -->
@@ -77,8 +90,8 @@ values (sno_sequence.nextval,#{mid}, #{sname},#{scategory},sysdate,#{scontent},#
 	set SNAME=#{sname},
 	SCATEGORY=#{scategory},
 	SCONTENT=#{scontent},
-	STHUMB=#{sthumb},
-	SIMAGE=#{simage},
+	STHUMB=#{sthumb,jdbcType=VARCHAR},
+	SIMAGE=#{simage,jdbcType=VARCHAR},
 	SMONEY=#{smoney},
 	SADDRESS=#{saddress},
 	SPHONE=#{sphone}

@@ -25,6 +25,8 @@ public class Criteria {
    }
    
    public String[] getTypeArr() {
+	   
+	   // 3항 연산자                  string[] 형태의 배열 {}를 리턴
       return type == null ? new String[] {}:type.split("");   
       }
 }

@@ -198,12 +198,32 @@ width:100%;
  	<h2>${sellboard.scategory}/${sellboard.sname}</h2>
  	<h3>작성자:${sellboard.mid} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 작성일:${sellboard.sregdate }</h3>
  	 <div id="divimg"> 
- 	 <img src="/resources/img/${sellboard.sthumb}" width="100%" height="500px" >
+ 	 <c:if test="${sellboard.sthumb==null }">
+     <img src="/resources/img/noimage.png" width="100%" height="500px">
+     </c:if>
+     <c:if test="${sellboard.sthumb!=null }">               			
+     <img src="/resources/img/${sellboard.sthumb}" width="100%" height="500px">
+     </c:if> 	 
+ 
  	 </div>
  	 <p></p>
  	 <div id="divimg"> 
- 	 <img src="/resources/img/${sellboard.simage}" width="100%" height="500px" >
+ 	 <c:if test="${sellboard.simage==null }">
+      <img src="/resources/img/noimage.png" width="100%" height="500px">
+      </c:if>
+      <c:if test="${sellboard.simage!=null }">               			
+      <img src="/resources/img/${sellboard.sthumb}" width="100%" height="500px">
+      </c:if> 	 
  	 </div> 	
+ 	 
+ 	 
+ 	 
+ 	 	
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
  	 <p></p>  
  	 <div id="contentboard">
  	 	<strong>${sellboard.scontent }</strong>

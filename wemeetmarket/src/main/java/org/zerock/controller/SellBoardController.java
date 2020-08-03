@@ -52,33 +52,32 @@ public class SellBoardController {
 		
 		try {
 		//		HttpServletRequest request,
+			System.out.println("---------------------------------------------------------");		
 			System.out.println(request1.getFile("sthumb1").getOriginalFilename());
+			System.out.println("---------------------------------------------------------");		
 			
 			
-		 if(request1.getFile("sthumb1").getOriginalFilename()!=null) {
+		 if(!"".equals(request1.getFile("sthumb1").getOriginalFilename())) {
 		 MultipartFile file = request1.getFile("sthumb1");
 		 String sthumb=up.uploadFileName(file);
 		 sthumb=up.fileUpload(file, sthumb);					  // 썸네일 이미지를 , 경로에다 저장
-		 sellboard.setSthumb(sthumb);
 		 sthumb=sthumb.replace("C:\\Lecture\\final\\wemeet\\wemeetmarket\\src\\main\\webapp\\resources\\img\\","");
+		 sellboard.setSthumb(sthumb);
 		 }
 		 
-		 if(request1.getFile("simage1").getOriginalFilename()!=null) {
+		 if(!"".equals(request1.getFile("simage1").getOriginalFilename())) {
 		 
 		 MultipartFile file1 = request1.getFile("simage1");
 		 String simage=up.uploadFileName(file1);			  // 경로 붙여서 리턴
 		 simage=up.fileUpload(file1, simage);					  // 이미지를, 경로에다 저장
-		 simage=simage.replace("C:\\Lecture\\final\\wemeet\\wemeetmarket\\src\\main\\webapp\\resources\\img\\", "");
+		 simage=simage.replace("C:\\Lecture\\final\\wemeet\\wemeetmarket\\src\\main\\webapp\\resources\\img\\","");
 		 sellboard.setSimage(simage);
-		 
 		 }
-		
 		 // 경로 붙여서 리턴
 		sellboard.setScontent(sellboard.getScontent().replace("\r\n","<br>"));
-
+		
 	    service.insert(sellboard);
-	    
-	    		
+	   	
 	    Thread.sleep(6000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -112,28 +111,25 @@ public class SellBoardController {
 		
 		
 		
-			 MultipartFile file = request1.getFile("sthumb1");
-			 MultipartFile file1 = request1.getFile("simage1");
-			 
-			 
-			String sthumb=up.uploadFileName(file);            // 경로 붙여서 리턴
-			String simage=up.uploadFileName(file1);			  // 경로 붙여서 리턴
-		
-			sthumb=up.fileUpload(file, sthumb);					  // 썸네일 이미지를 , 경로에다 저장
-			
-			simage=up.fileUpload(file1, simage);					  // 이미지를, 경로에다 저장
-			 
-			sthumb=sthumb.replace("C:\\Lecture\\final\\wemeet\\wemeetmarket\\src\\main\\webapp\\resources\\img\\","");
-			
-			simage=simage.replace("C:\\Lecture\\final\\wemeet\\wemeetmarket\\src\\main\\webapp\\resources\\img\\", "");
-			
-			sellboard.setSthumb(sthumb);
-			sellboard.setSimage(simage);
-			
-			System.out.println(sellboard.toString());
-			
-			sellboard.setScontent(sellboard.getScontent().replace("\r\n","<br>"));
-			
+			 if(!"".equals(request1.getFile("sthumb1").getOriginalFilename())) {
+				 MultipartFile file = request1.getFile("sthumb1");
+				 String sthumb=up.uploadFileName(file);
+				 sthumb=up.fileUpload(file, sthumb);					  // 썸네일 이미지를 , 경로에다 저장
+				 sthumb=sthumb.replace("C:\\Lecture\\final\\wemeet\\wemeetmarket\\src\\main\\webapp\\resources\\img\\","");
+				 sellboard.setSthumb(sthumb);
+				 }
+				 
+				 if(!"".equals(request1.getFile("simage1").getOriginalFilename())) {
+				 
+				 MultipartFile file1 = request1.getFile("simage1");
+				 String simage=up.uploadFileName(file1);			  // 경로 붙여서 리턴
+				 simage=up.fileUpload(file1, simage);					  // 이미지를, 경로에다 저장
+				 simage=simage.replace("C:\\Lecture\\final\\wemeet\\wemeetmarket\\src\\main\\webapp\\resources\\img\\","");
+				 sellboard.setSimage(simage);
+				 }
+				 // 경로 붙여서 리턴
+				sellboard.setScontent(sellboard.getScontent().replace("\r\n","<br>"));
+
 			service.update(sellboard);
 
 		} catch (Exception e) {
